@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Skeletal muscle receptor organs: spindle, tendon organ and the knee jerk</title>
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EDF0F3; --surface:#FFFFFF; --surface-2:#F5F7F9; --ink:#18202B; --muted:#556072; --rule:#CDD5DE;
+  --muscle:#EDA696; --muscle-line:#CF7B6A; --muscle-dim:#F3C9BF; --tendon:#F6F1EA; --tendon-line:#C2B39F; --bone:#EAE0CD; --bone-line:#B9AA8E;
+  --ia:#6E35B0; --ii:#6E35B0; --alpha:#0F8A73; --gamma:#94562A; --gto:#1E4C98; --inhib:#C0392B;
+  --intra:#D7262B; --grey-matter:#F0E5AE; --white-matter:#F2D3C3; --hammer:#B8442F;
+  --accent:#234E8C; --accent-ink:#FFFFFF; --ok:#1D7A46; --ok-bg:#E3F3E9; --bad:#B3261E; --bad-bg:#FBE7E5;
+  --serif:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --sans:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#11151B; --surface:#1A2028; --surface-2:#212833; --ink:#E5E9EF; --muted:#9AA4B2; --rule:#333C48;
+    --muscle:#B5695C; --muscle-line:#8C4A3F; --muscle-dim:#6E4740; --tendon:#3B3731; --tendon-line:#6B6256; --bone:#4B4538; --bone-line:#7A6F58;
+    --ia:#B98AF0; --ii:#B98AF0; --alpha:#3CC9A9; --gamma:#D9A06E; --gto:#86ABEE; --inhib:#F27C6F;
+    --intra:#F05A50; --grey-matter:#5C5434; --white-matter:#5A3F37; --hammer:#E07A62;
+    --accent:#8FB3F0; --accent-ink:#0E1420; --ok:#6FD39A; --ok-bg:#16301F; --bad:#FF8A80; --bad-bg:#3A1A18;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11151B; --surface:#1A2028; --surface-2:#212833; --ink:#E5E9EF; --muted:#9AA4B2; --rule:#333C48;
+  --muscle:#B5695C; --muscle-line:#8C4A3F; --muscle-dim:#6E4740; --tendon:#3B3731; --tendon-line:#6B6256; --bone:#4B4538; --bone-line:#7A6F58;
+  --ia:#B98AF0; --ii:#B98AF0; --alpha:#3CC9A9; --gamma:#D9A06E; --gto:#86ABEE; --inhib:#F27C6F;
+  --intra:#F05A50; --grey-matter:#5C5434; --white-matter:#5A3F37; --hammer:#E07A62;
+  --accent:#8FB3F0; --accent-ink:#0E1420; --ok:#6FD39A; --ok-bg:#16301F; --bad:#FF8A80; --bad-bg:#3A1A18;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* header */
+.top{background:var(--surface);border-bottom:1px solid var(--rule)}
+.top-inner{max-width:1320px;margin:0 auto;padding:22px 20px 0}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.35rem);line-height:1.1;margin:0 0 6px;letter-spacing:-.03em;max-width:30ch}
+.source{color:var(--muted);margin:0 0 18px;font-size:.95rem}
+.tabs{display:flex;gap:4px;overflow-x:auto}
+.tab{appearance:none;border:0;background:none;padding:12px 16px 13px;border-bottom:3px solid transparent;cursor:pointer;color:var(--muted);white-space:nowrap;font-weight:700}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .fig{font-family:var(--serif);font-weight:600;margin-right:6px}
+
+main{max-width:1320px;margin:0 auto;padding:22px 20px 32px}
+.foot{max-width:1320px;margin:0 auto;padding:18px 20px 28px;border-top:1px solid var(--rule);color:var(--muted);font-size:1.12rem;line-height:1.6}
+.foot p{margin:0}
+.foot strong{color:var(--ink)}
+.panel[hidden]{display:none}
+
+/* lesson layout */
+.lesson.wide{grid-template-columns:minmax(0,2fr) minmax(300px,1fr)}
+.figscroll{overflow-x:auto}
+.figscroll svg{min-width:620px}
+.lesson{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.lesson,.lesson.wide{grid-template-columns:1fr}}
+.stage{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:10px;position:relative}
+.stage svg{display:block;width:100%;height:auto}
+.scope-wrap{margin-top:10px;border-top:1px solid var(--rule);padding-top:8px}
+.scope-head{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.85rem;color:var(--muted);padding:0 4px 4px}
+canvas.scope{display:block;width:100%;height:232px}
+.f84steps{display:flex;gap:16px;flex-wrap:wrap;padding:4px 4px 10px}
+.f84steps button{appearance:none;border:0;background:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:.9rem;color:var(--muted);padding:2px;border-radius:999px}
+.f84steps .n{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--rule);background:var(--surface-2);display:grid;place-items:center;font-weight:700;color:var(--ink)}
+.f84steps button:hover .n{border-color:var(--muted)}
+.f84steps button[aria-current="step"]{color:var(--ink);font-weight:700}
+.f84steps button[aria-current="step"] .n{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.side{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px}
+.stepcount{color:var(--muted);font-size:.9rem;margin:0 0 4px}
+.card h2{font-family:var(--serif);font-weight:750;letter-spacing:-.01em;font-size:1.45rem;line-height:1.2;margin:0 0 10px}
+.card h3{font-family:var(--serif);font-weight:600;font-size:1.12rem;margin:0 0 10px}
+.narr{font-family:var(--serif);font-size:1.07rem;line-height:1.62;margin:0 0 12px}
+.watch{border-left:3px solid var(--accent);padding:6px 0 6px 12px;margin:0 0 14px;font-size:.95rem}
+.watch b{display:block;font-size:.85rem;color:var(--muted);font-weight:700}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.btn{appearance:none;border:1px solid var(--rule);background:var(--surface-2);padding:9px 14px;border-radius:8px;cursor:pointer;font-weight:700;line-height:1.2}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.dots{display:flex;gap:6px;margin:12px 0 0}
+.dots button{width:28px;height:28px;border-radius:50%;border:1px solid var(--rule);background:var(--surface-2);cursor:pointer;font-size:.8rem;font-weight:700;padding:0}
+.dots button[aria-current="step"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+.controls .row{display:flex;align-items:center;gap:12px;margin:0 0 12px;flex-wrap:wrap}
+.controls label.sl{display:flex;flex-direction:column;gap:4px;width:100%;font-weight:700;font-size:.95rem}
+.controls input[type=range]{width:100%;accent-color:var(--accent)}
+.toggle{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;border:1px solid var(--rule);background:var(--surface-2);cursor:pointer;font-weight:700}
+.toggle[aria-pressed="true"]{border-color:currentColor}
+.toggle .sw{width:12px;height:12px;border-radius:50%;border:2px solid currentColor}
+.toggle[aria-pressed="true"] .sw{background:currentColor}
+.t-alpha{color:var(--alpha)} .t-gamma{color:var(--gamma)}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.readout div{background:var(--surface-2);border-radius:8px;padding:8px 10px}
+.readout span{display:block;font-size:.8rem;color:var(--muted)}
+.readout strong{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.small{font-size:.88rem;color:var(--muted)}
+.chk{display:inline-flex;align-items:center;gap:6px;font-size:.9rem;color:var(--muted);cursor:pointer}
+
+/* reflex stages */
+.stages{list-style:none;margin:0 0 14px;padding:0;counter-reset:s}
+.stages li{counter-increment:s;position:relative;padding:8px 8px 8px 40px;border-radius:8px;color:var(--muted);font-size:.95rem;line-height:1.4}
+.stages li::before{content:counter(s);position:absolute;left:8px;top:8px;width:22px;height:22px;border-radius:50%;border:1px solid var(--rule);display:grid;place-items:center;font-size:.78rem;font-weight:700}
+.stages li.on{background:var(--surface-2);color:var(--ink)}
+.stages li.on::before{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.stages li.done{color:var(--ink)}
+.stages li b{display:block;color:var(--ink)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{appearance:none;border:1px solid var(--rule);background:var(--surface-2);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:.9rem}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.outcome{font-family:var(--serif);font-size:1.02rem;line-height:1.55;margin:12px 0 0;padding:12px;border-radius:8px;background:var(--surface-2);min-height:3em}
+
+/* test */
+.testnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.scorebar{display:flex;align-items:center;gap:14px;margin:0 0 18px;flex-wrap:wrap}
+.meter{flex:1;min-width:160px;height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;border:1px solid var(--rule)}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .4s}
+.labelgrid{display:grid;grid-template-columns:1fr;gap:20px}
+.lcard{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.lcard{grid-template-columns:1fr}}
+.lcard .pins{margin-top:0}
+.pins{display:grid;grid-template-columns:1fr;gap:6px;margin-top:12px}
+.pinrow{display:flex;align-items:center;gap:10px}
+.pinrow .num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:.82rem}
+.pinrow select{flex:1;min-width:0;padding:7px 8px;border-radius:7px;border:1px solid var(--rule);background:var(--surface-2)}
+.pinrow.right select{border-color:var(--ok);background:var(--ok-bg)}
+.pinrow.wrong select{border-color:var(--bad);background:var(--bad-bg)}
+.pinrow .fb{flex:none;width:1.2em;font-weight:700}
+.pinrow.right .fb{color:var(--ok)} .pinrow.wrong .fb{color:var(--bad)}
+.mono-on{--ia:var(--muted);--ii:var(--muted);--alpha:var(--muted);--gamma:var(--muted);--gto:var(--muted);--inhib:var(--muted)}
+
+.qcard{max-width:760px}
+.qmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;margin:0 0 6px;gap:10px}
+.qprompt{font-family:var(--serif);font-size:1.2rem;line-height:1.45;margin:0 0 14px}
+.opts{display:grid;gap:8px}
+.opt{appearance:none;text-align:left;border:1px solid var(--rule);background:var(--surface-2);padding:12px 14px;border-radius:8px;cursor:pointer;line-height:1.4;display:flex;gap:10px;align-items:flex-start}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt .k{flex:none;font-weight:700;color:var(--muted);width:1.2em}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt svg{display:block;width:100%;max-width:360px;height:auto}
+.explain{margin:14px 0 0;padding:12px 14px;border-radius:8px;background:var(--surface-2);font-family:var(--serif);font-size:1.02rem;line-height:1.55}
+.explain .verdict{font-family:var(--sans);font-weight:700;display:block;margin-bottom:4px}
+.explain .verdict.ok{color:var(--ok)} .explain .verdict.no{color:var(--bad)}
+.qfoot{display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap}
+.case{font-family:var(--serif);font-size:1.04rem;line-height:1.6;max-width:760px;margin:0 0 16px}
+.case p{margin:0 0 10px}
+.tracehead{display:block;width:calc(100% - 46px);max-width:360px;height:auto;margin:0 0 10px 46px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.85rem;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:18px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+@media (prefers-reduced-motion: reduce){.meter i{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <h1>How a muscle reports its own length and tension</h1>
+    <p class="source">Cunningham’s Textbook of Veterinary Physiology, Chapter 8: Skeletal Muscle Receptor Organs</p>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-a" aria-controls="p-a" aria-selected="true">Spindle and tendon organ</button>
+      <button class="tab" role="tab" id="tab-b" aria-controls="p-b" aria-selected="false">Knee jerk reflex</button>
+      <button class="tab" role="tab" id="tab-c" aria-controls="p-c" aria-selected="false">Test yourself</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============ FIG 8.1 ============ -->
+<section class="panel" id="p-a" role="tabpanel" aria-labelledby="tab-a">
+  <div class="lesson wide">
+    <div>
+      <div class="stage">
+        <div class="figscroll"><svg id="svgA" viewBox="0 0 960 470" role="img" aria-label="Animated schematic of extrafusal fibers, a muscle spindle and a Golgi tendon organ with their neurons"></svg></div>
+        <div class="scope-wrap">
+          <div class="scope-head"><span id="scopeNote">Recording of muscle length and action potentials (last 6 seconds)</span>
+            <span style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn" id="fig84A" style="padding:5px 10px;font-size:.85rem">Play the full sequence</button><button class="btn" id="pauseA" style="padding:5px 10px;font-size:.85rem">Pause</button></span></div>
+          <div class="f84steps" id="f84Steps" role="group" aria-label="Recording steps">
+            <button data-s="0"><span class="n">1</span>Static phase</button>
+            <button data-s="1"><span class="n">2</span>Dynamic phase (stretch)</button>
+            <button data-s="2"><span class="n">3</span>Dynamic phase (shortening)</button>
+          </div>
+          <canvas class="scope" id="scopeA" aria-label="Recording of muscle length and action potentials of the primary (Ia) and secondary (II) sensory endings"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="side">
+      <div class="card" aria-live="polite">
+        <p class="stepcount" id="stepCount">Step 1 of 6</p>
+        <h2 id="stepTitle"></h2>
+        <p class="narr" id="stepText"></p>
+        <p class="watch" id="stepWatch"></p>
+        <div class="nav">
+          <button class="btn" id="prevA">Previous</button>
+          <button class="btn primary" id="nextA">Next step</button>
+          <button class="btn" id="replayA">Replay step</button>
+        </div>
+        <div class="dots" id="dotsA" aria-label="Jump to step"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIG 8.3 ============ -->
+<section class="panel" id="p-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+  <div class="lesson">
+    <div>
+      <div class="stage">
+        <svg id="svgB" viewBox="0 0 580 820" role="img" aria-label="Animated knee jerk reflex arc from muscle spindle to spinal cord and back"></svg>
+      </div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <h2>Tap the patellar tendon</h2>
+        <ol class="stages" id="stagesB" aria-live="polite">
+          <li><b>Tendon tap stretches the quadriceps</b>The tendon runs over the patella, a sesamoid pulley, so a sideways tap becomes a lengthwise stretch of the whole muscle.</li>
+          <li><b>Spindle fires</b>Stretching the equatorial region is believed to open stretch-sensitive ion channels; the spindle sensory neuron fires action potentials.</li>
+          <li><b>Into the cord by the dorsal root</b>One synapse: an EPSP on the α motor neuron of the same muscle. A branch excites an inhibitory interneuron.</li>
+          <li><b>Out by the ventral root</b>α spikes reach the quadriceps; the interneuron puts an IPSP on the antagonist’s α motor neuron.</li>
+          <li><b>Knee extends, then the loop switches off</b>Contraction shortens the spindle, its discharge falls back to the prestretch level: negative feedback.</li>
+        </ol>
+        <div class="nav">
+          <button class="btn primary" id="tapB">Tap the tendon</button>
+          <button class="btn" id="contB" hidden>Continue</button>
+        </div>
+        <div class="row" style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
+          <label class="chk"><input type="checkbox" id="slowB"> Slow motion</label>
+          <label class="chk"><input type="checkbox" id="stepB"> Pause at each stage</label>
+        </div>
+        <p class="outcome" id="outcomeB">Press “Tap the tendon” to start the reflex.</p>
+      </div>
+      <div class="card">
+        <h3>Clinical mode: introduce a lesion, predict, then tap</h3>
+        <div class="seg" id="lesionB" role="group" aria-label="Lesion">
+          <button data-l="none" aria-pressed="true">Intact</button>
+          <button data-l="dorsal" aria-pressed="false">Dorsal root cut</button>
+          <button data-l="alpha" aria-pressed="false">α motor neurons lost</button>
+        </div>
+        <p class="small" id="lesionNote" style="margin:10px 0 0">All parts of the arc are working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEST ============ -->
+<section class="panel" id="p-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+  <div class="scorebar">
+    <strong id="scoreText">0 correct of 0 answered</strong>
+    <button class="btn" id="resetScore">Start over</button>
+  </div>
+  <div class="testnav seg" role="group" aria-label="Test sections">
+    <button data-t="labels" aria-pressed="true">Label the figures</button>
+    <button data-t="traces" aria-pressed="false">Predict the recording</button>
+    <button data-t="mcq" aria-pressed="false">Practice questions</button>
+    <button data-t="cases" aria-pressed="false">Clinical cases</button>
+  </div>
+
+  <div class="tsec" data-sec="labels">
+    <div class="row" style="display:flex;gap:16px;align-items:center;margin:0 0 12px;flex-wrap:wrap">
+      <label class="chk"><input type="checkbox" id="monoQ"> Hard mode: remove the colour coding</label>
+    </div>
+    <div class="labelgrid">
+      <div class="card">
+        <h3>Types of neurons innervating the muscle and its sensory organs</h3>
+        <div class="lcard">
+          <div id="qA_wrap" class="figscroll"><svg id="svgQA" viewBox="0 0 960 470" role="img" aria-label="Spindle and tendon organ diagram with the labels replaced by numbered pins"></svg></div>
+          <div><div class="pins" id="pinsA"></div>
+          <div class="nav" style="margin-top:12px"><button class="btn primary" id="checkA">Check labels</button><button class="btn" id="clearA">Clear</button></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>The muscle spindle stretch reflex (knee jerk reflex)</h3>
+        <div class="lcard">
+          <div id="qB_wrap"><svg id="svgQB" viewBox="0 0 580 820" role="img" aria-label="Unlabelled knee jerk reflex diagram with numbered pins" style="max-width:520px;margin:0 auto"></svg></div>
+          <div><div class="pins" id="pinsB"></div>
+          <div class="nav" style="margin-top:12px"><button class="btn primary" id="checkB">Check labels</button><button class="btn" id="clearB">Clear</button></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsec" data-sec="traces" hidden><div class="card qcard" id="qTraces"></div></div>
+  <div class="tsec" data-sec="mcq" hidden><div class="card qcard" id="qMcq"></div></div>
+  <div class="tsec" data-sec="cases" hidden>
+    <div class="case" id="caseText"></div>
+    <div class="card qcard" id="qCases"></div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p><strong>Reading</strong> – Cunningham’s Textbook of Veterinary Physiology, Chapter 8: Skeletal Muscle Receptor Organs</p>
+  <p>Created by Dr. Khalid Abdul Majeed, Department of Physiology, UVAS</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);if(attrs)for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function lerp(a,b,t){return a+(b-a)*t;}
+function ease(t){t=clamp(t,0,1);return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let colors={};
+function readColors(){const cs=getComputedStyle(document.documentElement);["ink","muted","rule","ia","ii","gto","alpha","gamma","surface","surface-2"].forEach(k=>colors[k]=cs.getPropertyValue("--"+k).trim());}
+readColors();
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",readColors);
+function store(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function load(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+
+/* ================= TABS ================= */
+const tabs=[...document.querySelectorAll(".tab")];
+function showTab(id){
+  tabs.forEach(t=>{const on=t.id===id;t.setAttribute("aria-selected",on);document.getElementById(t.getAttribute("aria-controls")).hidden=!on;});
+  store("ch8-tab",id);
+  activeTab=id;
+  if(id==="tab-a")requestAnimationFrame(sizeScope);
+}
+let activeTab="tab-a";
+tabs.forEach(t=>t.addEventListener("click",()=>showTab(t.id)));
+
+/* ================= FIG 8.1 VIEW ================= */
+class SpindleView{
+  /* Layout follows Fig. 8.1B: fixed top plate, bottom plate moves with muscle length.
+     Left: γ Motor neuron (top), Golgi tendon organ sensory neuron, α Motor neuron.
+     Right: Primary spindle sensory neuron (Ia), Secondary spindle sensory neuron (II). */
+  constructor(svg,opts){
+    this.svg=svg;this.opts=opts||{};const s=svg;
+    this.TOP=96; this.NW=13; this.FL=356; this.FR=628; this.SP=488;
+    const F="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif";
+    this.gBase=el("g",{},s);
+    // plates
+    el("rect",{x:300,y:66,width:468,height:30,fill:"var(--bone)"},this.gBase);
+    el("line",{x1:300,x2:768,y1:96,y2:96,stroke:"var(--ink)","stroke-width":1.6},this.gBase);
+    this.plateB=el("rect",{x:300,width:468,height:30,fill:"var(--bone)"},this.gBase);
+    this.plateBl=el("line",{x1:300,x2:768,stroke:"var(--ink)","stroke-width":1.6},this.gBase);
+    // extrafusal fibers
+    this.fib=[this.FL,this.FR].map(cx=>{
+      const g=el("g",{},this.gBase);
+      const nT=el("rect",{fill:"var(--muscle-dim)",stroke:"var(--muscle-line)","stroke-width":1},g);
+      const nB=el("rect",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1},g);
+      const nl=el("path",{fill:"none",stroke:"var(--muscle-line)","stroke-width":1},g);
+      const body=el("path",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1.4},g);
+      const lines=el("path",{fill:"none",stroke:"var(--muscle-line)","stroke-width":1.1,opacity:.85},g);
+      return {cx,nT,nB,nl,body,lines};
+    });
+    // intrafusal fiber (muscle spindle)
+    this.poleT=el("rect",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1},this.gBase);
+    this.poleB=el("rect",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1},this.gBase);
+    this.poleLines=el("path",{fill:"none",stroke:"var(--muscle-line)","stroke-width":1},this.gBase);
+    this.bulb=el("path",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1.4},this.gBase);
+    this.bulbIn=el("ellipse",{fill:"var(--muscle-dim)",opacity:.8},this.gBase);
+    this.glowIa=el("ellipse",{fill:"var(--ia)",opacity:0},this.gBase);
+    // Golgi tendon organ (top neck of left fiber)
+    this.gtoCap=el("rect",{fill:"var(--muscle-dim)",stroke:"var(--gto)","stroke-width":1,rx:5},this.gBase);
+    this.glowGto=el("rect",{fill:"var(--gto)",opacity:0,rx:6},this.gBase);
+    // leader lines (part of the figure framework)
+    this.gLead=el("g",{stroke:"var(--ink)","stroke-width":1.2,fill:"none"},s);
+    this.leadGto=el("path",{d:"M292,144 L345,110"},this.gLead);
+    this.leadIntra=el("path",{d:"M532,44 L495,104"},this.gLead);
+    this.leadExtra=el("path",{},this.gLead);
+    // nerves
+    this.gN=el("g",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round"},s);
+    this.nG=el("path",{stroke:"var(--gamma)","stroke-width":4},this.gN);
+    this.nGb=el("path",{stroke:"var(--gamma)","stroke-width":4},this.gN);
+    this.nGend=el("path",{stroke:"var(--gamma)","stroke-width":2},this.gN);
+    this.nGto=el("path",{stroke:"var(--gto)","stroke-width":5},this.gN);
+    this.nGtoEnd=el("path",{stroke:"var(--gto)","stroke-width":3},this.gN);
+    this.nA1=el("path",{stroke:"var(--alpha)","stroke-width":10},this.gN);
+    this.nA2=el("path",{stroke:"var(--alpha)","stroke-width":10},this.gN);
+    this.nAf=el("path",{stroke:"var(--alpha)","stroke-width":4},this.gN);
+    this.nII=el("path",{stroke:"var(--ii)","stroke-width":4},this.gN);
+    this.nIIend=el("path",{stroke:"var(--ii)","stroke-width":2.4},this.gN);
+    this.coil=el("path",{stroke:"var(--ia)","stroke-width":3},this.gN);
+    this.nIa=el("path",{stroke:"var(--ia)","stroke-width":10},this.gN);
+    // direction-of-flow arrows, as in the book
+    this.gArr=el("g",{},s);
+    const arrow=(x1,x2,y,col)=>{const dir=Math.sign(x2-x1);el("line",{x1,x2:x2-dir*8,y1:y,y2:y,stroke:col,"stroke-width":2.2},this.gArr);el("path",{d:`M${x2},${y} l${-dir*10},-5 l0,10 z`,fill:col},this.gArr);};
+    arrow(200,236,44,"var(--gamma)");arrow(236,200,92,"var(--gto)");arrow(200,236,184,"var(--alpha)");
+    arrow(696,732,92,"var(--ia)");arrow(696,732,152,"var(--ii)");
+    // spikes
+    this.gS=el("g",{},s);
+    // labels: exact wording of Fig. 8.1B
+    this.gL=el("g",{"font-family":F,"font-size":16},s);
+    const T=(x,y,lines,col,anchor)=>{const t=el("text",{x,y,"text-anchor":anchor||"start",fill:col},this.gL);lines.forEach((ln,i)=>{const ts=el("tspan",{x,dy:i?19:0},t);ts.textContent=ln;});return t;};
+    T(160,63,["γ Motor neuron"],"var(--gamma)","end");
+    T(160,102,["Golgi tendon organ","sensory neuron"],"var(--gto)","end");
+    T(160,203,["α Motor neuron"],"var(--alpha)","end");
+    T(288,150,["Golgi tendon organ"],"var(--ink)","end");
+    T(546,20,["Intrafusal muscle fibers","(muscle spindle)"],"var(--ink)","middle");
+    T(780,100,["Primary spindle","sensory neuron (Ia)"],"var(--ia)");
+    T(780,142,["Secondary spindle","sensory neuron (II)"],"var(--ii)");
+    T(702,272,["Extrafusal muscle fiber"],"var(--ink)");
+    // series / parallel annotation (step 1)
+    this.gAnn=el("g",{"font-family":F,"font-size":15,"font-weight":700,opacity:0},s);
+    el("path",{d:"M300,430 v7 h112 v-7",fill:"none",stroke:"var(--gto)","stroke-width":2},this.gAnn);
+    el("text",{x:330,y:458,"text-anchor":"middle",fill:"var(--gto)"},this.gAnn).textContent="In series: senses tension";
+    el("path",{d:"M450,430 v7 h234 v-7",fill:"none",stroke:"var(--ia)","stroke-width":2},this.gAnn);
+    el("text",{x:590,y:458,"text-anchor":"middle",fill:"var(--ia)"},this.gAnn).textContent="In parallel: senses length";
+    this.spikes=[];
+    this.pinPos={gam:[110,58],gtoN:[110,106],alp:[110,197],gto:[230,145],intra:[546,28],ia:[840,108],ii:[840,150],extra:[780,266]};
+    this.showLabels(this.opts.labels!==false);
+  }
+  showLabels(on){this.gL.style.display=on?"":"none";}
+  update(st){
+    const L=st.L, a=st.a||0, gm=st.g||0, TOP=this.TOP, NW=this.NW;
+    const yB=TOP+290*L, b0=TOP+28, b1=yB-30;
+    const w=48/Math.sqrt(L)*(1+0.1*a);
+    this.plateB.setAttribute("y",yB);this.plateBl.setAttribute("y1",yB);this.plateBl.setAttribute("y2",yB);
+    const hw=y=>{const u=clamp((y-b0)/(b1-b0),0,1);return NW+(w-NW)*Math.pow(Math.sin(Math.PI*u),0.8);};
+    this.hw=hw;
+    this.fib.forEach(f=>{
+      const cx=f.cx;
+      f.nT.setAttribute("x",cx-NW);f.nT.setAttribute("y",TOP);f.nT.setAttribute("width",2*NW);f.nT.setAttribute("height",b0-TOP);
+      f.nB.setAttribute("x",cx-NW);f.nB.setAttribute("y",b1);f.nB.setAttribute("width",2*NW);f.nB.setAttribute("height",yB-b1);
+      let nl="";for(let k=1;k<6;k++){const x=cx-NW+2*NW*k/6;nl+=`M${x},${b1+2} V${yB-1} `;}
+      f.nl.setAttribute("d",nl);
+      const N=30;let R=[],Lf=[];
+      for(let i=0;i<=N;i++){const y=lerp(b0,b1,i/N);R.push([cx+hw(y),y]);Lf.push([cx-hw(y),y]);}
+      f.body.setAttribute("d","M"+R.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L")+" L"+Lf.reverse().map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L")+" Z");
+      let ld="";for(let k=-3;k<=3;k++){let d="";for(let i=0;i<=N;i++){const y=lerp(b0,b1,i/N);d+=(i?" L":"M")+(cx+k/3.6*hw(y)).toFixed(1)+","+y.toFixed(1);}ld+=d+" ";}
+      f.lines.setAttribute("d",ld);
+    });
+    // intrafusal
+    const cx=this.SP, pT=100*(1-0.35*gm), pB=90*(1-0.35*gm);
+    const t=TOP+pT, bt=yB-pB, eq=bt-t, eq0=100;
+    this.eqLen=eq;
+    this.poleT.setAttribute("x",cx-6);this.poleT.setAttribute("y",TOP);this.poleT.setAttribute("width",12);this.poleT.setAttribute("height",pT);
+    this.poleB.setAttribute("x",cx-6);this.poleB.setAttribute("y",bt);this.poleB.setAttribute("width",12);this.poleB.setAttribute("height",pB);
+    let pl="";for(let y=TOP+5;y<t-2;y+=6)pl+=`M${cx-6},${y} h12 `;for(let y=bt+5;y<yB-2;y+=6)pl+=`M${cx-6},${y} h12 `;
+    this.poleLines.setAttribute("d",pl);
+    const slack=Math.max(0,eq0-eq), amp=Math.min(5,Math.sqrt(slack)*0.8);
+    const bw=clamp(32*Math.sqrt(eq0/Math.max(eq,30)),20,44);
+    const bx=u=>6+(bw-6)*Math.pow(Math.sin(Math.PI*u),0.9)+amp*Math.sin(u*Math.PI*8)*Math.sin(Math.PI*u);
+    const N=36;let R=[],Lf=[];
+    for(let i=0;i<=N;i++){const u=i/N,y=lerp(t,bt,u),d=bx(u);R.push([cx+d,y]);Lf.push([cx-d,y]);}
+    this.bulb.setAttribute("d","M"+R.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L")+" L"+Lf.reverse().map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L")+" Z");
+    this.bulbIn.setAttribute("cx",cx);this.bulbIn.setAttribute("cy",t+eq*0.5);this.bulbIn.setAttribute("rx",bw*0.45);this.bulbIn.setAttribute("ry",eq*0.32);
+    // Ia annulospiral in upper part of the swelling
+    const y0=t+eq*0.12, y1=t+eq*0.56, r=bw*0.5, turns=3.5, th=Math.PI*2*turns;let cd="";
+    for(let i=0;i<=90;i++){const q=i/90*th;const x=cx-r*Math.cos(q),y=lerp(y0,y1,q/th)+r*0.45*Math.sin(q);cd+=(i?" L":"M")+x.toFixed(1)+","+y.toFixed(1);}
+    this.coil.setAttribute("d",cd);this.coil.setAttribute("opacity",slack>12?0.55:1);
+    const ex=cx+r;
+    this.iaD=`M${ex},${y1} L${cx+28},${y1} Q${cx+38},${y1} ${cx+38},${y1-10} L${cx+38},118 Q${cx+38},108 ${cx+48},108 L770,108`;
+    this.nIa.setAttribute("d",this.iaD);
+    // II ending lower in the swelling
+    const yi=t+eq*0.74, xi=cx+bx(0.74);
+    this.iiD=`M${cx+4},${yi} L${cx+54},${yi} Q${cx+64},${yi} ${cx+64},${yi-10} L${cx+64},146 Q${cx+64},136 ${cx+74},136 L770,136`;
+    this.nII.setAttribute("d",this.iiD);
+    this.nIIend.setAttribute("d",`M${cx+4},${yi} l-7,-6 M${cx+4},${yi} l-8,1 M${cx+4},${yi} l-6,7`);
+    // γ motor neuron: above top plate, down left of the spindle; branch to upper pole, main to lower pole
+    const yLow=bt+pB*0.35;
+    this.g1D=`M170,58 L418,58 Q445,58 445,85 L445,112 Q445,120 455,120 L${cx-7},120`;
+    this.g2D=`M170,58 L418,58 Q445,58 445,85 L445,${yLow-10} Q445,${yLow} 455,${yLow} L${cx-7},${yLow}`;
+    this.nG.setAttribute("d",this.g2D);this.nGb.setAttribute("d",`M445,112 Q445,120 455,120 L${cx-7},120`);
+    const spray=(y)=>`M${cx-7},${y} l8,-7 M${cx-7},${y} l9,0 M${cx-7},${y} l8,7 M${cx-7},${y} l4,12 M${cx-7},${y} l4,-12 `;
+    this.nGend.setAttribute("d",spray(120)+spray(yLow));
+    // Golgi tendon organ in the top neck of the left fiber
+    const lx=this.FL, T=st.T||0;
+    this.gtoCap.setAttribute("x",lx-NW-3);this.gtoCap.setAttribute("y",TOP+2);this.gtoCap.setAttribute("width",2*NW+6);this.gtoCap.setAttribute("height",b0-TOP);
+    this.gtoD=`M${lx-6},106 L170,106`;
+    this.nGto.setAttribute("d",`M170,106 L${lx-6},106`);
+    this.nGtoEnd.setAttribute("d",`M${lx-6},106 q6,0 10,-6 q3,-4 8,-3 M${lx-6},106 q6,0 10,6 q3,5 8,4 M${lx-6},106 l14,2`);
+    this.glowGto.setAttribute("x",lx-NW-7);this.glowGto.setAttribute("y",TOP-2);this.glowGto.setAttribute("width",2*NW+14);this.glowGto.setAttribute("height",b0-TOP+8);
+    this.glowGto.setAttribute("opacity",clamp((st.rGto||0)/250,0,0.38));
+    // α motor neuron: into the left fiber with a fork; trunk dips down, runs along the bottom, rises into the right fiber
+    const ay=197, ay2=205, ab=yB-24;
+    const fxL=this.FL-hw(ay)+10, fxR=this.FR-hw(ay2)+10;
+    this.a1D=`M170,${ay} L${fxL},${ay}`;
+    this.a2D=`M170,${ay} L276,${ay} Q286,${ay} 286,${ay+10} L286,${ab-10} Q286,${ab} 296,${ab} L555,${ab} Q565,${ab} 565,${ab-10} L565,${ay2+10} Q565,${ay2} 575,${ay2} L${fxR},${ay2}`;
+    this.a2Dclean=this.a2D;
+    this.nA1.setAttribute("d",this.a1D);this.nA2.setAttribute("d",this.a2D);
+    const fork=(x,y)=>`M${x-4},${y} C${x+8},${y} ${x+14},${y-8} ${x+16},${y-34} M${x-4},${y} C${x+8},${y} ${x+16},${y+6} ${x+20},${y+26} `;
+    this.nAf.setAttribute("d",fork(fxL,ay)+fork(fxR,ay2));
+    // glows and leader to the right fiber
+    const ia=st.rIa||0;
+    this.glowIa.setAttribute("cx",cx);this.glowIa.setAttribute("cy",(y0+y1)/2);this.glowIa.setAttribute("rx",bw+6);this.glowIa.setAttribute("ry",(y1-y0)/2+12);
+    this.glowIa.setAttribute("opacity",clamp(ia/32,0,0.4));
+    const my=Math.min(250,(b0+b1)/2+20);
+    this.leadExtra.setAttribute("d",`M698,266 L${this.FR+hw(my)-4},${my}`);
+  }
+  addPins(list){
+    this.gP=el("g",{"font-family":"Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif","font-size":15,"font-weight":700},this.svg);
+    this.pinEls={};
+    list.forEach((k,i)=>{const p=this.pinPos[k];const g=el("g",{transform:`translate(${p[0]},${p[1]})`},this.gP);
+      el("circle",{r:15,fill:"var(--ink)",stroke:"var(--surface)","stroke-width":2.5},g);
+      const t=el("text",{"text-anchor":"middle",y:5,fill:"var(--surface)"},g);t.textContent=i+1;this.pinEls[k]=g;});
+  }
+}
+
+/* --------- Fig 8.1 simulation --------- */
+const svgA=document.getElementById("svgA");
+const viewA=new SpindleView(svgA,{labels:true});
+const simA={L:1,a:0,g:0,T:0,s:0,aOn:0,gOn:0,vel:0,rIa:0,rII:0,rGto:0,phase:{ia:Math.random(),ii:Math.random(),gto:Math.random(),al:Math.random(),ga:Math.random()},paused:false,t:0};
+const hist=[];const HIST_S=6;
+function stepSim(dt){
+  const S=simA;
+  const prev=S.L, ls0=S.Ls;
+  // imposed (passive) stretch and active shortening by α are tracked separately
+  {const d=S.s-S.Ls,sp=0.2*dt;S.Ls+=Math.abs(d)<=sp?d:Math.sign(d)*sp;}
+  {const d=0.18*S.aOn-S.La,sp=0.2*dt;S.La+=Math.abs(d)<=sp?d:Math.sign(d)*sp;}
+  S.L=1+S.Ls-S.La;
+  S.vel=(S.L-prev)/dt;
+  const vs=(S.Ls-ls0)/dt; // velocity of imposed stretch: the dynamic stimulus of Fig. 8.4
+  S.a+= (S.aOn-S.a)*Math.min(1,dt*8);
+  {const d=S.gOn-S.g,sp=1.11*dt;S.g+=Math.abs(d)<=sp?d:Math.sign(d)*sp;}
+  S.T=0.95*S.a;
+  // spindle endings respond to stretch of the equatorial region: e = muscle length change + polar shortening by γ
+  const e=(S.L-1)+0.19*S.g;
+  const taut=e>-0.03?1:0; // a slackened spindle cannot transduce a stretch (Ch. 8)
+  S.rIa=clamp(6+27*e+70*vs*taut,0,60);
+  S.rII=clamp(6+27*e+5*vs*taut,0,60);
+  S.rGto=clamp(62*S.T,0,200);
+  const spikes={};
+  const fire=(k,rate)=>{S.phase[k]+=rate*dt*(0.85+Math.random()*0.3);if(S.phase[k]>=1){S.phase[k]-=1;spikes[k]=1;if(S.phase[k]>1)S.phase[k]=0;}};
+  fire("ia",S.rIa);fire("ii",S.rII);fire("gto",S.rGto);fire("al",S.a>0.05?45*S.a:0);fire("ga",S.g>0.05?40*S.g:0);
+  S.t+=dt;
+  hist.push({t:S.t,L:S.L,ia:spikes.ia||0,ii:spikes.ii||0,gto:spikes.gto||0,al:spikes.al||0,ga:spikes.ga||0,ph:S.vel>0.02?1:(S.vel<-0.02?-1:0)});
+  while(hist.length&&hist[0].t<S.t-HIST_S)hist.shift();
+  return spikes;
+}
+// travelling spike dots on fig 8.1
+const tmpPath=el("path",{fill:"none",stroke:"none"},svgA);
+function launchA(kind){
+  const sp={kind,p:0,dot:el("circle",{r:kind==="ia"?4.8:4,fill:{ia:"var(--ia)",ii:"var(--ii)",gto:"var(--gto)",al:"var(--alpha)",ga:"var(--gamma)",al2:"var(--alpha)",ga2:"var(--gamma)"}[kind],stroke:"var(--surface)","stroke-width":1.2},viewA.gS)};
+  viewA.spikes.push(sp);
+}
+function pathFor(kind){return {ia:viewA.iaD,ii:viewA.iiD,gto:viewA.gtoD,al:viewA.a1D,al2:viewA.a2Dclean,ga:viewA.g1D,ga2:viewA.g2D}[kind];}
+function moveSpikesA(dt){
+  const keep=[];
+  for(const sp of viewA.spikes){
+    sp.p+=dt/0.7;
+    if(sp.p>=1){sp.dot.remove();continue;}
+    tmpPath.setAttribute("d",pathFor(sp.kind));
+    const len=tmpPath.getTotalLength();
+    const afferent=(sp.kind==="ia"||sp.kind==="ii"||sp.kind==="gto");
+    const pt=tmpPath.getPointAtLength(afferent?sp.p*len:sp.p*len);
+    sp.dot.setAttribute("cx",pt.x);sp.dot.setAttribute("cy",pt.y);
+    keep.push(sp);
+  }
+  viewA.spikes=keep;
+}
+// scope
+const scope=document.getElementById("scopeA");const sctx=scope.getContext("2d");
+function sizeScope(){const r=scope.getBoundingClientRect();const dpr=window.devicePixelRatio||1;scope.width=Math.max(10,r.width*dpr);scope.height=r.height*dpr;sctx.setTransform(dpr,0,0,dpr,0,0);}
+window.addEventListener("resize",()=>{if(activeTab==="tab-a")sizeScope();});
+function drawScope(){drawFig84();}
+function drawScopeOld(){
+  const W=scope.width/(window.devicePixelRatio||1),H=scope.height/(window.devicePixelRatio||1);
+  sctx.clearRect(0,0,W,H);
+  const lw=138, x0=lw, x1=W-6;
+  const rows=[{k:"L",name:"Muscle length",c:colors.ink},{k:"ia",name:"Ia",c:colors.ia},{k:"ii",name:"II",c:colors.ii},{k:"gto",name:"Golgi tendon organ",c:colors.gto},{k:"mot",name:"α / γ drive",c:colors.muted}];
+  const rh=H/rows.length;
+  sctx.font="13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif";sctx.textBaseline="middle";
+  const tNow=simA.t, tx=t=>x1-(tNow-t)/HIST_S*(x1-x0);
+  rows.forEach((r,i)=>{
+    const yc=i*rh+rh/2;
+    sctx.fillStyle=r.k==="mot"?colors.muted:r.c;sctx.fillText(r.name,4,yc);
+    sctx.strokeStyle=colors.rule;sctx.lineWidth=1;sctx.beginPath();sctx.moveTo(x0,i*rh+rh-0.5);sctx.lineTo(x1,i*rh+rh-0.5);sctx.stroke();
+    if(r.k==="L"){
+      sctx.strokeStyle=r.c;sctx.lineWidth=2;sctx.beginPath();
+      hist.forEach((h,j)=>{const x=tx(h.t),y=yc-(h.L-1)*rh*2.4;j?sctx.lineTo(x,y):sctx.moveTo(x,y);});sctx.stroke();
+    }else if(r.k==="mot"){
+      sctx.lineWidth=1.6;
+      hist.forEach(h=>{const x=tx(h.t);if(h.al){sctx.strokeStyle=colors.alpha;sctx.beginPath();sctx.moveTo(x,yc-rh*0.36);sctx.lineTo(x,yc-2);sctx.stroke();}if(h.ga){sctx.strokeStyle=colors.gamma;sctx.beginPath();sctx.moveTo(x,yc+2);sctx.lineTo(x,yc+rh*0.36);sctx.stroke();}});
+    }else{
+      sctx.strokeStyle=r.c;sctx.lineWidth=1.6;sctx.beginPath();
+      hist.forEach(h=>{if(h[r.k]){const x=tx(h.t);sctx.moveTo(x,yc-rh*0.36);sctx.lineTo(x,yc+rh*0.36);}});sctx.stroke();
+    }
+  });
+}
+
+/* Recording drawn in the layout of Fig. 8.4: muscle length, primary sensory ending Ia, secondary sensory ending II */
+function drawFig84(){
+  const dpr=window.devicePixelRatio||1, W=scope.width/dpr, H=scope.height/dpr, c=sctx;
+  c.clearRect(0,0,W,H);
+  const lw=Math.min(176,Math.max(120,W*0.24)), x0=lw, x1=W-8;
+  const top=40, rh=54, yL=top, yIa=top+rh, yII=top+2*rh, yEnd=top+3*rh;
+  const tNow=simA.t, tx=t=>x1-(tNow-t)/HIST_S*(x1-x0);
+  c.save();c.globalAlpha=0.14;c.fillStyle=colors.ia;c.fillRect(x0,0,x1-x0,yEnd);c.restore();
+  c.font="13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif";c.textBaseline="middle";c.textAlign="center";c.fillStyle=colors.ink;
+  const lab=(lines,y)=>lines.forEach((s,i)=>c.fillText(s,lw/2,y+(i-(lines.length-1)/2)*15));
+  lab(["Muscle length"],yL+rh*0.62);
+  lab(["Primary sensory ending","Ia"],yIa+rh*0.62);
+  lab(["Secondary sensory ending","II"],yII+rh*0.62);
+  // phases (static / dynamic stretch / dynamic shortening)
+  const segs=[];
+  for(const h of hist){const p=h.ph||0,last=segs[segs.length-1];if(last&&last.p===p)last.t1=h.t;else segs.push({p,t0:h.t,t1:h.t});}
+  const clean=[];for(const s of segs){const prev=clean[clean.length-1];if(prev&&(s.p===prev.p||s.t1-s.t0<0.06))prev.t1=s.t1;else clean.push(Object.assign({},s));}
+  const showPh=stepIdx<3||fig84Mode;
+  c.strokeStyle=colors.ink;c.lineWidth=1;c.setLineDash([4,4]);
+  clean.forEach((s,i)=>{if(!i||!showPh)return;const x=tx(s.t0);if(x<=x0)return;c.beginPath();c.moveTo(x,yL+4);c.lineTo(x,yEnd);c.stroke();});
+  c.setLineDash([]);
+  const names={0:["Static phase"],1:["Dynamic phase","(stretch)"],"-1":["Dynamic phase","(shortening)"]};
+  clean.forEach(s=>{if(!showPh)return;const xs=Math.max(tx(s.t0),x0),xe=Math.min(tx(s.t1),x1),ln=names[s.p];const w=Math.max(...ln.map(t=>c.measureText(t).width));if(xe-xs<(s.p?20:w+8))return;c.fillStyle=colors.ink;ln.forEach((t,i)=>c.fillText(t,(xs+xe)/2,ln.length>1?12+i*14:28));});
+  if(!showPh&&evts.length){c.save();c.setLineDash([2,3]);c.strokeStyle=colors.muted;c.fillStyle=colors.ink;c.textAlign="left";
+    evts.forEach(ev=>{const x=tx(ev.t);if(x<x0)return;c.beginPath();c.moveTo(x,22);c.lineTo(x,yEnd);c.stroke();c.fillText(ev.label,x+4,13);});c.restore();}
+  // muscle length trace
+  c.strokeStyle=colors.ink;c.lineWidth=2;c.beginPath();
+  hist.forEach((h,j)=>{const x=tx(h.t),y=clamp(yL+rh*0.55-(h.L-1)*rh*1.9,yL-30,yL+rh-2);j?c.lineTo(x,y):c.moveTo(x,y);});c.stroke();
+  // action potentials
+  [["ia",yIa],["ii",yII]].forEach(([k,y0])=>{
+    const base=y0+rh*0.82;
+    c.strokeStyle=colors.ink;c.lineWidth=1.4;c.beginPath();c.moveTo(x0,base);c.lineTo(x1,base);
+    hist.forEach(h=>{if(h[k]){const x=tx(h.t);c.moveTo(x,base);c.lineTo(x,y0+rh*0.22);}});c.stroke();
+  });
+  // footer
+  c.textAlign="left";c.fillStyle=colors.ink;c.fillText("Action potentials",x0+6,yEnd+14);
+  c.textAlign="right";c.fillText("TIME",x1-66,yEnd+14);
+  c.strokeStyle=colors.alpha;c.fillStyle=colors.alpha;c.lineWidth=2;c.beginPath();c.moveTo(x1-60,yEnd+14);c.lineTo(x1-14,yEnd+14);c.stroke();
+  c.beginPath();c.moveTo(x1-4,yEnd+14);c.lineTo(x1-14,yEnd+9);c.lineTo(x1-14,yEnd+19);c.closePath();c.fill();
+}
+let fig84T=[];
+function stopFig84(){fig84T.forEach(clearTimeout);fig84T=[];}
+let fig84Mode=false;
+/* Each run starts from a fixed state on a cleared recording, holds a static baseline, then applies its changes. */
+let evts=[], chainFrom=-1;
+function schedule(changes){changes.forEach(([ms,c,label])=>fig84T.push(setTimeout(()=>{setControls(c.s,c.a,c.g);if(label)evts.push({t:simA.t,label});},ms)));}
+function runProtocol(st,changes){
+  stopFig84();
+  hist.length=0;evts=[];
+  setControls(st.s,st.a,st.g);
+  simA.Ls=st.s;simA.La=0.18*st.a;simA.L=1+simA.Ls-simA.La;simA.a=st.a;simA.g=st.g;simA.vel=0;
+  simA.paused=false;document.getElementById("pauseA").textContent="Pause";
+  schedule(changes);
+}
+function playFig84(){
+  runProtocol({s:0,a:0,g:0},[[1200,{s:0.15,a:0,g:0}],[3650,{s:0,a:0,g:0}]]);
+  fig84Mode=true;chainFrom=-1;
+  document.querySelectorAll("#f84Steps button").forEach(b=>b.removeAttribute("aria-current"));
+  document.getElementById("scopeNote").textContent="Recording of muscle length and action potentials (last 6 seconds)";
+}
+/* --------- Fig 8.1 guided steps --------- */
+const stepsA=[
+ {t:"Two receptors, two arrangements",s:0,a:0,g:0,ann:true,
+  x:"The muscle spindle, a capsule of 3 to 12 slender intrafusal fibers, lies in parallel with the extrafusal fibers that move the joint. The Golgi tendon organ sits in series, at the junction of muscle and tendon. That geometry decides what each one measures: the spindle reports length, the tendon organ reports tension.",
+  w:"Even at constant length the spindle sensory neurons fire at a steady rate, so the CNS can detect both lengthening (more action potentials) and shortening (fewer)."},
+ {t:"Stretch the muscle",s:0.15,a:0,g:0,
+  x:"Pulling the tendon ends apart lengthens the extrafusal fibers and, because they are in parallel, the equatorial region of the intrafusal fibers too. Stretch-sensitive ion channels are believed to open on the sensory neurons, and action potentials are generated in proportion to the amount of lengthening.",
+  w:"Ia fires a fast burst while the length is changing (velocity), then settles at a higher steady rate. II rises to a higher steady rate at the new length."},
+ {t:"Let it shorten again",st:{s:0.15,a:0,g:0},s:0,a:0,g:0,
+  x:"When the muscle returns to its starting length, the equatorial region is no longer stretched. Spindle discharge falls below the steady level while the muscle shortens, then recovers to the resting rate.",
+  w:"The Ia trace goes silent during the dynamic phase of shortening while II keeps firing: type Ia and type II neurons display differential sensitivity to the dynamic phase of shortening."},
+ {t:"Contract with α motor neurons alone",s:0,a:1,g:0,
+  x:"α motor neurons drive the extrafusal fibers. The muscle shortens and, because the spindle lies alongside, its intrafusal fibers go slack. Meanwhile the tendon organ, in series, is pulled tight: its braided collagen squeezes the sensory endings and it fires in proportion to the tension. This slackening does not normally occur, because γ motor neurons fire at the same time (next step).",
+  w:"In the diagram, the muscle shortens and the spindle’s equatorial region goes slack (wavy), so the glow on the spindle sensory endings fades: their firing “is reduced.” The Golgi tendon organ, in series, lights up as tension develops."},
+ {t:"Add γ motor neurons: α–γ coactivation",s:0,a:1,g:1,
+  x:"γ motor neurons supply the contractile polar ends of the intrafusal fibers. Firing them alongside the α motor neurons shortens the poles and keeps the equatorial region taut, so the spindle stays sensitive to a sudden stretch at any muscle length.",
+  w:"Same contraction, but the polar regions shorten too, so the equatorial region stays taut and the spindle sensory endings keep their glow. The Golgi tendon organ still lights up."},
+ {t:"γ alone: the CNS controls spindle sensitivity directly",s:0,a:0,g:1,
+  x:"Intrafusal contraction does not shorten the whole muscle, but it does stretch the equatorial region from both ends. The CNS can therefore adjust spindle sensitivity directly.",
+  w:"The muscle does not change length, but the polar regions shorten, the equatorial region is stretched and the glow on the spindle sensory endings grows brighter."}
+];
+let stepIdx=0;
+const dotsA=document.getElementById("dotsA");
+stepsA.forEach((s,i)=>{const b=document.createElement("button");b.textContent=i+1;b.setAttribute("aria-label","Step "+(i+1)+": "+s.t);b.addEventListener("click",()=>goStep(i));dotsA.appendChild(b);});
+function setControls(s,a,g){
+  simA.s=s;simA.aOn=a;simA.gOn=g;
+}
+function goStep(i,replay){
+  stopFig84();
+  stepIdx=clamp(i,0,stepsA.length-1);const s=stepsA[stepIdx];
+  document.getElementById("stepCount").textContent=`Step ${stepIdx+1} of ${stepsA.length}`;
+  document.getElementById("stepTitle").textContent=s.t;
+  document.getElementById("stepText").textContent=s.x;
+  document.getElementById("stepWatch").innerHTML="<b>Watch for</b>"+s.w;
+  [...dotsA.children].forEach((b,j)=>{if(j===stepIdx)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");});
+  document.querySelectorAll("#f84Steps button").forEach(b=>{if(+b.dataset.s===stepIdx)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current");});
+  // the book has a recording (Fig. 8.4) only for steps 1–3
+  const swA=document.querySelector("#p-a .scope-wrap"), hideRec=stepIdx>=3;
+  if(swA.hidden!==hideRec){swA.hidden=hideRec;if(!hideRec)requestAnimationFrame(sizeScope);}
+  document.getElementById("prevA").disabled=stepIdx===0;
+  document.getElementById("nextA").disabled=stepIdx===stepsA.length-1;
+  viewA.gAnn.style.transition="opacity .5s";viewA.gAnn.setAttribute("opacity",s.ann?1:0);
+  fig84Mode=false;
+  document.getElementById("scopeNote").textContent=stepIdx<3?"Recording of muscle length and action potentials (last 6 seconds)":"Described in the chapter text; the book has no recording for this step";
+  const R={s:0,a:0,g:0}, S1={s:0.15,a:0,g:0};
+  const chain=!replay&&chainFrom===stepIdx-1&&(stepIdx===1||stepIdx===2);
+  if(chain){ // steps 1–3 continue one Fig. 8.4 trace
+    if(stepIdx===1) schedule([[200,S1]]);
+    else { setControls(0.15,0,0); const left=Math.max(0,(0.15-simA.Ls)/0.2*1000); schedule([[left+1000,R]]); }
+  } else {
+    const P=[ [], [[1200,S1]], [[1200,S1],[3150,R]],
+      [[1200,{s:0,a:1,g:0}]],
+      [[1200,{s:0,a:1,g:1}]],
+      [[1200,{s:0,a:0,g:1}]] ];
+    runProtocol(R,P[stepIdx]);
+  }
+  chainFrom=stepIdx<3?stepIdx:-1;
+}
+document.getElementById("prevA").onclick=()=>goStep(stepIdx-1);
+document.querySelectorAll("#f84Steps button").forEach(b=>b.onclick=()=>goStep(+b.dataset.s));
+document.getElementById("nextA").onclick=()=>goStep(stepIdx+1);
+document.getElementById("replayA").onclick=()=>goStep(stepIdx,true);
+document.getElementById("fig84A").onclick=playFig84;
+document.getElementById("pauseA").onclick=e=>{simA.paused=!simA.paused;e.currentTarget.textContent=simA.paused?"Resume":"Pause";};
+
+/* ================= FIG 8.3 VIEW ================= */
+class ReflexView{
+  /* Layout follows Fig. 8.3: cord at top, spindle sensory neuron (cell body on its stalk above the cord)
+     down the left side, α and γ motor neurons down the middle, second α motor neuron curving right
+     to the antagonist. Limb faces left: extrafusal muscle (with red intrafusal muscle and spindle
+     receptor) in front of the femur, antagonist extrafusal muscle behind. */
+  constructor(svg,opts){
+    this.svg=svg;this.opts=opts||{};const s=svg;
+    const F="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif";
+    this.stifle=[262,716];
+    // spinal cord
+    this.gCord=el("g",{},s);
+    el("ellipse",{cx:330,cy:116,rx:126,ry:72,fill:"var(--white-matter)",stroke:"var(--muscle-line)","stroke-width":1.4},this.gCord);
+    el("path",{d:"M330,92 C318,58 278,56 274,82 C271,99 289,105 296,113 C283,123 260,133 264,152 C268,176 304,172 320,146 L330,142 L340,146 C356,172 392,176 396,152 C400,133 377,123 364,113 C371,105 389,99 386,82 C382,56 342,58 330,92 Z",fill:"var(--grey-matter)",stroke:"var(--bone-line)","stroke-width":1},this.gCord);
+    el("path",{d:"M330,44 L330,62 M330,170 L330,188",stroke:"var(--muscle-line)","stroke-width":1.4},this.gCord);
+    el("circle",{cx:330,cy:118,r:3,fill:"var(--surface)",stroke:"var(--bone-line)"},this.gCord);
+    // limb
+    this.gLimb=el("g",{},s);
+    el("path",{d:"M282,392 C300,370 362,370 402,386 C432,398 458,420 454,446 C450,470 422,480 402,472 C382,464 362,470 352,480 C338,494 312,494 302,480 C290,464 270,410 282,392 Z",fill:"var(--bone)",stroke:"var(--bone-line)","stroke-width":1.5},this.gLimb);
+    this.ham=el("path",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1.5},this.gLimb);
+    this.hamFib=el("path",{fill:"none",stroke:"var(--muscle-line)","stroke-width":1,opacity:.7},this.gLimb);
+    this.gTib=el("g",{},this.gLimb);
+    el("line",{x1:262,y1:732,x2:248,y2:900,stroke:"var(--bone-line)","stroke-width":27,"stroke-linecap":"round"},this.gTib);
+    el("line",{x1:262,y1:732,x2:248,y2:900,stroke:"var(--bone)","stroke-width":24,"stroke-linecap":"round"},this.gTib);
+    el("path",{d:"M236,736 C238,724 290,722 292,736 C292,748 270,752 262,752 C250,752 236,748 236,736 Z",fill:"var(--bone)",stroke:"var(--bone-line)","stroke-width":1.5},this.gTib);
+    el("line",{x1:334,y1:458,x2:262,y2:712,stroke:"var(--bone-line)","stroke-width":28,"stroke-linecap":"round"},this.gLimb);
+    el("line",{x1:334,y1:458,x2:262,y2:712,stroke:"var(--bone)","stroke-width":25,"stroke-linecap":"round"},this.gLimb);
+    el("circle",{cx:336,cy:452,r:17,fill:"var(--bone)",stroke:"var(--bone-line)","stroke-width":1.5},this.gLimb);
+    el("ellipse",{cx:264,cy:716,rx:24,ry:15,fill:"var(--bone)",stroke:"var(--bone-line)","stroke-width":1.5},this.gLimb);
+    this.quad=el("path",{fill:"var(--muscle)",stroke:"var(--muscle-line)","stroke-width":1.5},this.gLimb);
+    this.quadFib=el("path",{fill:"none",stroke:"var(--muscle-line)","stroke-width":1,opacity:.7},this.gLimb);
+    this.tendon=el("path",{fill:"none",stroke:"var(--tendon-line)","stroke-width":8,"stroke-linecap":"round"},this.gLimb);
+    this.tendonIn=el("path",{fill:"none",stroke:"var(--tendon)","stroke-width":5,"stroke-linecap":"round"},this.gLimb);
+    this.patella=el("ellipse",{rx:9,ry:15,fill:"var(--bone)",stroke:"var(--bone-line)","stroke-width":1.5},this.gLimb);
+    // intrafusal muscle (red) with the spindle receptor
+    this.intra=el("line",{stroke:"var(--intra)","stroke-width":11,"stroke-linecap":"round"},s);
+    this.gSp=el("g",{},s);
+    this.spGlow=el("ellipse",{rx:24,ry:30,fill:"var(--ia)",opacity:0},this.gSp);
+    this.spCap=el("ellipse",{rx:13,ry:20,fill:"var(--surface)",stroke:"var(--ia)","stroke-width":1.5},this.gSp);
+    this.spCoil=el("path",{fill:"none",stroke:"var(--ia)","stroke-width":2.4},this.gSp);
+    // neurons
+    this.gN=el("g",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round"},s);
+    const pre="M250,557 C240,520 234,470 222,400 C208,320 186,230 184,150 C182,96 196,52 222,36 C238,27 258,26 272,32 C282,37 287,42 289,50";
+    this.P={
+      ia:pre+" C293,70 298,92 299,108 C300,120 295,127 291,131",
+      ia2:pre+" C293,70 298,92 299,108 C301,112 302,116 303,119",
+      aq:"M283,149 C281,200 276,260 272,320 C268,400 262,450 258,496",
+      ah:"M308,156 C318,222 350,290 396,338 C430,374 424,470 404,556 C398,584 392,600 386,612",
+      inh:"M313,131 C313,134 311,137 309,140",
+      gam:"M294,163 C300,240 303,300 301,380 C299,440 292,476 286,496"
+    };
+    this.nGam=el("path",{d:this.P.gam,stroke:"var(--gamma)","stroke-width":4},this.gN);
+    this.nAh=el("path",{d:this.P.ah,stroke:"var(--alpha)","stroke-width":4.5},this.gN);
+    this.nAq=el("path",{d:this.P.aq,stroke:"var(--alpha)","stroke-width":4.5},this.gN);
+    this.nIa=el("path",{d:this.P.ia,stroke:"var(--ia)","stroke-width":4.5},this.gN);
+    this.nIa2=el("path",{d:"M299,108 C301,112 302,116 303,119",stroke:"var(--ia)","stroke-width":3},this.gN);
+    this.nInh=el("path",{d:this.P.inh,stroke:"var(--ink)","stroke-width":2.5},this.gN);
+    // cell body of the spindle sensory neuron on its stalk, above the cord
+    el("path",{d:"M248,28 L248,18",stroke:"var(--ia)","stroke-width":3},this.gN);
+    el("circle",{cx:248,cy:11,r:7.5,fill:"var(--surface)",stroke:"var(--ia)","stroke-width":2.5},this.gN);
+    // presynaptic terminals (ovals) and somas (stars)
+    el("ellipse",{cx:290,cy:131,rx:3.5,ry:6,fill:"var(--surface)",stroke:"var(--ia)","stroke-width":2},this.gN);
+    el("ellipse",{cx:304,cy:122,rx:3.5,ry:6,transform:"rotate(-15 304 122)",fill:"var(--surface)",stroke:"var(--ia)","stroke-width":2},this.gN);
+    const star=(x,y,r,col)=>{let d="";for(let i=0;i<14;i++){const a=-Math.PI/2+i*Math.PI/7,rr=i%2?r*0.45:r;d+=(i?"L":"M")+(x+rr*Math.cos(a)).toFixed(1)+","+(y+rr*Math.sin(a)).toFixed(1);}return el("path",{d:d+"Z",fill:col,stroke:col,"stroke-width":1,"stroke-linejoin":"round"},this.gN);};
+    this.somaQ=star(283,141,8,"var(--alpha)");
+    this.somaH=star(308,148,8,"var(--alpha)");
+    star(294,157,6.5,"var(--gamma)");
+    this.somaI=star(313,124,7.5,"var(--ink)");
+    // motor endings: forks on the extrafusal muscles
+    el("path",{d:"M258,496 c-2,8 -8,12 -14,14 M258,496 c2,8 6,14 12,16",stroke:"var(--alpha)","stroke-width":3},this.gN);
+    el("path",{d:"M386,612 c-4,8 -10,10 -16,10 M386,612 c0,8 4,14 8,18",stroke:"var(--alpha)","stroke-width":3},this.gN);
+    // direction-of-flow arrows
+    this.gArr=el("g",{},s);
+    const arrow=(x1,y1,x2,y2,col)=>{const a=Math.atan2(y2-y1,x2-x1);el("line",{x1,y1,x2:x2-8*Math.cos(a),y2:y2-8*Math.sin(a),stroke:col,"stroke-width":2.2},this.gArr);el("path",{d:`M${x2},${y2} L${x2-11*Math.cos(a)+5*Math.sin(a)},${y2-11*Math.sin(a)-5*Math.cos(a)} L${x2-11*Math.cos(a)-5*Math.sin(a)},${y2-11*Math.sin(a)+5*Math.cos(a)} Z`,fill:col},this.gArr);};
+    arrow(168,222,168,188,"var(--ia)");arrow(208,478,204,444,"var(--ia)");
+    arrow(252,346,252,378,"var(--alpha)");arrow(314,320,314,352,"var(--gamma)");arrow(400,330,418,354,"var(--alpha)");
+    // flashes
+    this.gF=el("g",{"font-family":F,"font-weight":700,"font-size":14},s);
+    this.fQ=this.flash(283,141,"var(--alpha)","+ EPSP",-92,46);
+    this.fI=this.flash(313,124,"var(--alpha)","+",14,-10);
+    this.fH=this.flash(308,148,"var(--inhib)","− IPSP",24,40);
+    // lesion marks
+    this.gX=el("g",{stroke:"var(--inhib)","stroke-width":4,"stroke-linecap":"round"},s);
+    // reflex hammer: held vertically in front of the stifle, head level with the patellar tendon
+    this.gHamWrap=el("g",{transform:"translate(190,666)"},s);
+    this.gHam=el("g",{},this.gHamWrap);
+    el("path",{d:"M-4.5,0 L4.5,0 L2.5,64 L-2.5,64 Z",fill:"var(--muted)"},this.gHam);
+    el("path",{d:"M-24,58 L40,66 Q44,69 40,72 L-24,82 Q-28,70 -24,58 Z",fill:"var(--hammer)",stroke:"var(--ink)","stroke-width":1,"stroke-linejoin":"round"},this.gHam);
+    // spikes
+    this.gS=el("g",{},s);
+    // leader lines + labels: exact wording of Fig. 8.3
+    this.gLead=el("g",{},s);
+    this.gL=el("g",{"font-family":F,"font-size":15},s);
+    const lead=d=>el("path",{d,fill:"none",stroke:"var(--ink)","stroke-width":1.1},this.gLead);
+    const T=(x,y,lines,col,anchor)=>{const t=el("text",{x,y,"text-anchor":anchor||"start",fill:col},this.gL);lines.forEach((ln,i)=>{const ts=el("tspan",{x,dy:i?18:0},t);ts.textContent=ln;});return t;};
+    T(432,44,["Inhibitory","neuron"],"var(--ink)");lead("M428,48 L320,121");
+    T(271,270,["α Motor","neuron"],"var(--alpha)","end");
+    T(366,296,["γ Motor neuron"],"var(--gamma)");lead("M360,291 L305,291");
+    T(456,408,["α Motor","neuron"],"var(--alpha)");lead("M452,404 L428,396");
+    T(184,360,["Spindle","sensory neuron"],"var(--ia)","end");lead("M188,366 L210,366");
+    T(176,546,["Intrafusal","muscle"],"var(--ink)","end");lead("M180,548 L280,506");lead("M180,552 L232,642");
+    T(176,592,["Spindle","receptor"],"var(--ink)","end");lead("M180,596 L244,582");
+    T(176,640,["Extrafusal","muscle"],"var(--ink)","end");lead("M180,644 L218,638");
+    T(392,716,["Antagonist","extrafusal muscle"],"var(--ink)");lead("M388,712 L376,684");
+    this.pinPos={spin:[150,366],inh:[462,52],a1:[244,278],gam:[410,291],a2:[478,412],intra:[150,552],rec:[150,596],extra:[150,644],ant:[430,720]};
+    this.state={hammer:0,hv:0,tib:0,q:1,h:1,stretch:0,lesion:"none"};
+    this.showLabels(this.opts.labels!==false);
+    this.apply();
+  }
+  flash(x,y,col,txt,dx,dy){const g=el("g",{opacity:0},this.gF);el("circle",{cx:x,cy:y,r:15,fill:"none",stroke:col,"stroke-width":3},g);const t=el("text",{x:x+dx,y:y+dy,fill:col},g);t.textContent=txt;return g;}
+  showLabels(on){this.gL.style.display=on?"":"none";}
+  ext(){return -this.state.tib;} // engine uses negative values for extension
+  tibPoint(px,py){const a=this.ext()*Math.PI/180,[cx,cy]=this.stifle;const dx=px-cx,dy=py-cy;return [cx+dx*Math.cos(a)-dy*Math.sin(a),cy+dx*Math.sin(a)+dy*Math.cos(a)];}
+  apply(){
+    const S=this.state;
+    this.gTib.setAttribute("transform",`rotate(${this.ext()} ${this.stifle[0]} ${this.stifle[1]})`);
+    const atro=S.lesion==="alpha"?0.55:1, q=S.q*atro, b=34*(q-1)*2.2, st=S.stretch*6;
+    // extrafusal muscle (front of femur, inserting on the patella)
+    const pY=690+st;
+    this.quad.setAttribute("d",`M304,470 C${262-b*0.6},476 ${206-b},540 ${208-b*0.8},608 C${209-b*0.3},648 222,${pY-12} 228,${pY-6} L240,${pY-6} C252,630 270,560 322,484 Z`);
+    let fd="";[0.3,0.55,0.8].forEach(f=>{fd+=`M${lerp(318,306,f)},${lerp(482,474,f)} C${lerp(300,262-b*0.6,f)},${lerp(500,480,f)} ${lerp(256,210-b,f)},${lerp(580,560,f)} ${lerp(238,230,f)},${pY-8} `;});
+    this.quadFib.setAttribute("d",fd);
+    this.patella.setAttribute("cx",232);this.patella.setAttribute("cy",pY+4);this.patella.setAttribute("transform",`rotate(18 232 ${pY+4})`);
+    const tt=this.tibPoint(244,768);
+    const mx=(234+tt[0])/2+S.stretch*12, my=(pY+18+tt[1])/2;
+    const td=`M234,${pY+18} Q${mx},${my} ${tt[0]},${tt[1]}`;
+    this.tendon.setAttribute("d",td);this.tendonIn.setAttribute("d",td);
+    // antagonist extrafusal muscle (behind femur, inserting on the tibia)
+    const h1=this.tibPoint(290,748), h2=this.tibPoint(282,736), hb=26*(S.h-1)*3;
+    this.ham.setAttribute("d",`M418,468 C${466+hb},520 ${456+hb},640 ${h1[0]},${h1[1]} L${h2[0]},${h2[1]} C${346},690 ${364},640 ${374},600 C${388},540 ${384},500 362,478 Z`);
+    this.hamFib.setAttribute("d",`M404,480 C${440+hb*0.6},540 ${430+hb*0.6},640 ${(h1[0]+h2[0])/2},${(h1[1]+h2[1])/2-4} M386,486 C404,540 398,620 ${h2[0]+6},${h2[1]-6}`);
+    this.ham.setAttribute("fill","var(--muscle)");
+    // intrafusal muscle + spindle receptor: stretched by the tap, shortened by contraction
+    const k=1+S.stretch*0.12-Math.max(0,S.q-1)*0.5, mxI=257, myI=574, dxI=27*k, dyI=-74*k;
+    this.intra.setAttribute("x1",mxI+dxI);this.intra.setAttribute("y1",myI+dyI);this.intra.setAttribute("x2",mxI-dxI);this.intra.setAttribute("y2",myI-dyI);
+    this.gSp.setAttribute("transform",`translate(${mxI},${myI}) rotate(20)`);
+    const ry=20*k;this.spCap.setAttribute("ry",ry);
+    let d="";const n=5;for(let i=0;i<=n*2;i++){const y=lerp(-ry*0.7,ry*0.7,i/(n*2));d+=(i?" L":"M")+(i%2?10:-10)+","+y.toFixed(1);}
+    this.spCoil.setAttribute("d",d);
+    this.spGlow.setAttribute("opacity",clamp(S.stretch*0.35,0,0.35));
+    this.gHamWrap.setAttribute("opacity",this.opts.labels===false?0:1);
+    this.gHam.setAttribute("transform",`translate(${lerp(-32,-8,S.hammer)},0) rotate(${lerp(0,-6,S.hammer)})`);
+  }
+  nearestFrac(path,x,y){const m=el("path",{d:path},this.svg);const L=m.getTotalLength();let best=0,bd=1e9;for(let i=0;i<=200;i++){const p=m.getPointAtLength(L*i/200);const dd=(p.x-x)**2+(p.y-y)**2;if(dd<bd){bd=dd;best=i/200;}}m.remove();return best;}
+  cutFrac(k){if(!this._cut)this._cut={ia:this.nearestFrac(this.P.ia,276,34),aq:this.nearestFrac(this.P.aq,266,430)};return this._cut[k];}
+  setLesion(l){
+    this.state.lesion=l;while(this.gX.firstChild)this.gX.firstChild.remove();
+    const tmp=el("path",{d:""},this.svg);
+    const mark=(path,frac)=>{tmp.setAttribute("d",path);const L=tmp.getTotalLength();const p=tmp.getPointAtLength(L*frac);el("path",{d:`M${p.x-8},${p.y-8} L${p.x+8},${p.y+8} M${p.x+8},${p.y-8} L${p.x-8},${p.y+8}`},this.gX);};
+    if(l==="dorsal")mark(this.P.ia,this.cutFrac("ia"));
+    if(l==="alpha")mark(this.P.aq,this.cutFrac("aq"));
+    tmp.remove();this.apply();
+  }
+  addPins(list){
+    this.gP=el("g",{"font-family":"Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif","font-size":14,"font-weight":700},this.svg);
+    this.pinEls={};
+    list.forEach((k,i)=>{const p=this.pinPos[k];const g=el("g",{transform:`translate(${p[0]},${p[1]})`},this.gP);
+      el("circle",{r:14,fill:"var(--ink)",stroke:"var(--surface)","stroke-width":2.5},g);
+      const t=el("text",{"text-anchor":"middle",y:5,fill:"var(--surface)"},g);t.textContent=i+1;this.pinEls[k]=g;});
+  }
+}
+
+/* --------- Fig 8.3 reflex engine --------- */
+const svgB=document.getElementById("svgB");
+const viewB=new ReflexView(svgB,{labels:true});
+const RB={running:false,paused:false,t:0,anims:[],spikes:[],stage:-1,lesion:"none",flags:{}};
+const measure=el("path",{d:"",fill:"none"},svgB);
+const pathLen={};for(const k in viewB.P){measure.setAttribute("d",viewB.P[k]);pathLen[k]=measure.getTotalLength();}
+const stageEls=[...document.querySelectorAll("#stagesB li")];
+function speed(){return document.getElementById("slowB").checked?0.33:1;}
+function setStage(i){
+  if(i<=RB.stage)return;
+  RB.stage=i;
+  stageEls.forEach((li,j)=>{li.classList.toggle("on",j===i);li.classList.toggle("done",j<i);});
+  if(document.getElementById("stepB").checked&&i>0){RB.paused=true;document.getElementById("contB").hidden=false;document.getElementById("contB").focus({preventScroll:true});}
+}
+function anim(dur,fn,done){RB.anims.push({t0:RB.t,dur:Math.max(1,dur),fn,done});}
+function spike(k,{stop=1,onArrive,width}={}){
+  const col={ia:"var(--ia)",ia2:"var(--ia)",aq:"var(--alpha)",ah:"var(--alpha)",inh:"var(--ink)"}[k];
+  const dot=el("circle",{r:k==="ia"||k==="ia2"?5.5:5,fill:col,stroke:"var(--surface)","stroke-width":1.5},viewB.gS);
+  RB.spikes.push({k,d:0,stop,onArrive,dot});
+}
+function flash(g,dur){anim(dur||700,p=>g.setAttribute("opacity",p<0.15?p/0.15:1-(p-0.15)/0.85),()=>g.setAttribute("opacity",0));}
+const outcomeB=document.getElementById("outcomeB");
+const lesionText={
+  none:"All parts of the arc are working.",
+  dorsal:"Sensory side cut: the spindle still detects the stretch, but its signal cannot enter the cord.",
+  alpha:"Motor side lost: no α motor neurons to the quadriceps, as in the golden retriever case. Note the atrophied quadriceps.",
+  hyper:"Descending projections from brain to spinal cord can modulate the activity of spinal reflex circuits. Predict what loss of descending inhibitory control does to the knee jerk."
+};
+function startReflex(){
+  if(RB.running)return;
+  RB.running=true;RB.paused=false;RB.t=0;RB.anims=[];RB.stage=-1;RB.flags={};
+  RB.spikes.forEach(s=>s.dot.remove());RB.spikes=[];
+  document.getElementById("tapB").disabled=true;
+  outcomeB.textContent="Watch the spikes…";
+  const L=RB.lesion, S=viewB.state;S.hv=1;
+  setStage(0);
+  // hammer swing in
+  anim(260,p=>{S.hammer=ease(p);},()=>{
+    // impact
+    anim(260,p=>{S.hammer=1-ease(p);});
+    anim(180,p=>{S.stretch=ease(p);},()=>{
+      setStage(1);
+      anim(500,()=>{},()=>{anim(500,p=>{S.stretch=1-ease(p)*0.6;});});
+      // Ia burst
+      const nB=4;
+      for(let i=0;i<nB;i++){
+        anim(i*55,()=>{},()=>{
+          const first=i===0;
+          spike("ia",{stop:L==="dorsal"?viewB.cutFrac("ia"):1,onArrive:()=>{
+            if(L==="dorsal")return;
+            if(first){setStage(2);flash(viewB.fQ,900);}
+            fireAlphaQ(first);
+          }});
+          spike("ia2",{stop:L==="dorsal"?viewB.cutFrac("ia"):1,onArrive:()=>{
+            if(L==="dorsal")return;
+            if(first)flash(viewB.fI,600);
+            spike("inh",{onArrive:()=>{if(first){flash(viewB.fH,1000);}inhibitHam();}});
+          }});
+        });
+      }
+      if(L==="dorsal"){
+        anim(1600,()=>{},()=>{setStage(4);finish("No reflex. The volley stops at the dorsal root, so the α motor neurons never receive an EPSP. The quadriceps does not contract and the knee stays still.");});
+      }
+    });
+  });
+}
+let alphaCount=0;
+function fireAlphaQ(first){
+  const L=RB.lesion;const n=L==="hyper"?2:1;
+  for(let j=0;j<n;j++){
+    anim(30+j*40,()=>{},()=>{
+      if(first&&j===0)setStage(3);
+      spike("aq",{stop:L==="alpha"?viewB.cutFrac("aq"):1,onArrive:()=>{
+        if(L==="alpha")return;
+        if(!RB.flags.contract){RB.flags.contract=true;contract();}
+      }});
+    });
+  }
+  if(first&&L==="alpha"){
+    anim(1300,()=>{},()=>{setStage(4);finish("No knee extension. The spindle fired and the EPSP occurred, but without α motor neurons to the quadriceps nothing reaches the extrafusal fibers. That severs the arc on its motor side, and it is also why the muscle has wasted.");});
+  }
+}
+function inhibitHam(){
+  if(RB.flags.inhib)return;RB.flags.inhib=true;
+}
+function contract(){
+  const S=viewB.state, hyper=RB.lesion==="hyper";
+  const peak=hyper?-40:-24, qpk=hyper?1.28:1.18;
+  setStage(4);
+  anim(240,p=>{const e=ease(p);S.q=lerp(1,qpk,e);S.tib=lerp(0,peak,e);S.stretch=lerp(0.4,0,e);},()=>{
+    anim(380,()=>{},()=>{
+      anim(700,p=>{const e=ease(p);S.q=lerp(qpk,1,e);S.tib=lerp(peak,0,e);},()=>{
+        if(hyper){
+          finish("An exaggerated reflex response: hyperreflexia. The reflex arc itself is intact; exaggeration of reflexes may indicate loss of descending inhibitory control from more rostral parts of the CNS.");
+        } else finish("The knee extends (“jerks”). Shortening the quadriceps shortens the spindle’s equatorial region, spindle firing drops back to its prestretch level and the response ends: a classic negative-feedback system. Through the inhibitory interneuron, the α motor neurons to the antagonist were inhibited at the same time, preventing its contraction.");
+      });
+    });
+  });
+}
+function finish(msg){
+  viewB.state.hv=0;viewB.apply();
+  outcomeB.textContent=msg;RB.running=false;
+  document.getElementById("tapB").disabled=false;document.getElementById("contB").hidden=true;
+  stageEls.forEach(li=>{li.classList.remove("on");li.classList.add("done");});
+  setTimeout(()=>{if(!RB.running)stageEls.forEach(li=>li.classList.remove("done"));},4000);
+}
+function tickB(dt){
+  if(!RB.running||RB.paused)return;
+  const ms=dt*1000*speed();
+  RB.t+=ms;
+  const list=RB.anims;RB.anims=[];
+  for(const a of list){const p=(RB.t-a.t0)/a.dur;if(p>=1){a.fn(1);if(a.done)a.done();}else{a.fn(Math.max(0,p));RB.anims.push(a);}}
+  const v=0.62*ms;
+  const sl=RB.spikes;RB.spikes=[];
+  for(const s of sl){
+    s.d+=v;const L=pathLen[s.k];
+    if(s.d>=L*s.stop){s.dot.remove();if(s.onArrive)s.onArrive();continue;}
+    measure.setAttribute("d",viewB.P[s.k]);const p=measure.getPointAtLength(s.d);
+    s.dot.setAttribute("cx",p.x);s.dot.setAttribute("cy",p.y);RB.spikes.push(s);
+  }
+  viewB.apply();
+}
+document.getElementById("tapB").onclick=startReflex;
+document.getElementById("contB").onclick=()=>{RB.paused=false;document.getElementById("contB").hidden=true;};
+function setLesion(l){
+  RB.lesion=l;viewB.setLesion(l);
+  document.querySelectorAll("#lesionB button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+  document.getElementById("lesionNote").textContent=lesionText[l];
+  if(!RB.running)outcomeB.textContent=l==="none"?"Press “Tap the tendon” to start the reflex.":"Predict what will happen, then tap the tendon.";
+}
+document.querySelectorAll("#lesionB button").forEach(b=>b.onclick=()=>setLesion(b.dataset.l));
+
+/* ================= MAIN LOOP ================= */
+let last=performance.now();
+function frame(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(activeTab==="tab-a"&&!simA.paused){
+    // integrate in small substeps for spike accuracy
+    const n=4;for(let i=0;i<n;i++)stepSim(dt/n);
+    viewA.update(simA);moveSpikesA(dt);drawScope();
+  }
+  if(activeTab==="tab-b")tickB(dt);
+  requestAnimationFrame(frame);
+}
+
+/* ================= TEST YOURSELF ================= */
+const score={answered:{},correct:{}};
+function record(id,ok){if(id in score.answered)return;score.answered[id]=1;if(ok)score.correct[id]=1;renderScore();}
+function renderScore(){
+  const a=Object.keys(score.answered).length,c=Object.keys(score.correct).length;
+  document.getElementById("scoreText").textContent=`${c} correct of ${a} answered`;
+}
+document.querySelectorAll(".testnav button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".testnav button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  document.querySelectorAll(".tsec").forEach(s=>s.hidden=s.dataset.sec!==b.dataset.t);
+});
+
+// --- labels
+const vQA=new SpindleView(document.getElementById("svgQA"),{labels:false});
+vQA.update({L:1,a:0,g:0,T:0});
+const keysA=["extra","intra","gto","ia","ii","gam","alp","gtoN"];
+const namesA={extra:"Extrafusal muscle fiber",intra:"Intrafusal muscle fibers (muscle spindle)",gto:"Golgi tendon organ",ia:"Primary spindle sensory neuron (Ia)",ii:"Secondary spindle sensory neuron (II)",gam:"γ Motor neuron",alp:"α Motor neuron",gtoN:"Golgi tendon organ sensory neuron"};
+const orderA=["gam","gtoN","gto","alp","intra","ia","ii","extra"];
+vQA.addPins(orderA);
+const vQB=new ReflexView(document.getElementById("svgQB"),{labels:false});
+const orderB=["inh","a1","gam","spin","a2","intra","rec","extra","ant"];
+const ansB={a1:"alpha",a2:"alpha"};
+const namesB={inh:"Inhibitory neuron",alpha:"α Motor neuron",gam:"γ Motor neuron",spin:"Spindle sensory neuron",intra:"Intrafusal muscle",rec:"Spindle receptor",extra:"Extrafusal muscle",ant:"Antagonist extrafusal muscle"};
+vQB.addPins(orderB);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildPins(boxId,order,names,ans){
+  const box=document.getElementById(boxId);box.innerHTML="";
+  const opts=shuffle(Object.keys(names));
+  order.forEach((k,i)=>{
+    const row=document.createElement("div");row.className="pinrow";row.dataset.k=k;row.dataset.ans=(ans&&ans[k])||k;
+    row.innerHTML=`<span class="num">${i+1}</span>`;
+    const sel=document.createElement("select");sel.setAttribute("aria-label","Pin "+(i+1));
+    sel.innerHTML=`<option value="">Choose a structure…</option>`+opts.map(o=>`<option value="${o}">${names[o]}</option>`).join("");
+    sel.onchange=()=>{row.classList.remove("right","wrong");row.querySelector(".fb").textContent="";};
+    row.appendChild(sel);const fb=document.createElement("span");fb.className="fb";row.appendChild(fb);
+    box.appendChild(row);
+  });
+}
+buildPins("pinsA",orderA,namesA);buildPins("pinsB",orderB,namesB,ansB);
+function checkPins(boxId,prefix){
+  document.querySelectorAll(`#${boxId} .pinrow`).forEach(row=>{
+    const sel=row.querySelector("select");const ok=sel.value===row.dataset.ans;
+    row.classList.toggle("right",ok);row.classList.toggle("wrong",!ok);
+    row.querySelector(".fb").textContent=ok?"✓":"✗";
+    row.querySelector(".fb").setAttribute("aria-label",ok?"correct":"incorrect");
+    if(sel.value)record(prefix+row.dataset.k,ok);
+  });
+}
+document.getElementById("checkA").onclick=()=>checkPins("pinsA","la-");
+document.getElementById("checkB").onclick=()=>checkPins("pinsB","lb-");
+document.getElementById("clearA").onclick=()=>buildPins("pinsA",orderA,namesA);
+document.getElementById("clearB").onclick=()=>buildPins("pinsB",orderB,namesB,ansB);
+document.getElementById("monoQ").onchange=e=>{document.getElementById("qA_wrap").classList.toggle("mono-on",e.target.checked);document.getElementById("qB_wrap").classList.toggle("mono-on",e.target.checked);};
+
+// --- trace sketches
+function traceSVG(rateFn,col,lenFn){
+  const w=360,h=lenFn?96:52;const s=el("svg",{viewBox:`0 0 ${w} ${h}`,"aria-hidden":"true"});
+  let y0=4;
+  if(lenFn){let d="";for(let i=0;i<=100;i++){const t=i/100;d+=(i?" L":"M")+(10+t*(w-20)).toFixed(1)+","+(30-lenFn(t)*22).toFixed(1);}el("path",{d,fill:"none",stroke:"var(--ink)","stroke-width":2},s);
+    const tx=el("text",{x:10,y:44,"font-size":11,fill:"var(--muted)","font-family":"Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"},s);tx.textContent="Muscle length";y0=50;}
+  let ph=0.3,d="";const N=600;
+  for(let i=0;i<N;i++){const t=i/N;ph+=rateFn(t)/N*1.0;if(ph>=1){ph-=1;const x=10+t*(w-20);d+=`M${x.toFixed(1)},${y0+4} L${x.toFixed(1)},${y0+40}`;}}
+  el("path",{d,stroke:col,"stroke-width":1.6},s);
+  el("line",{x1:10,x2:w-10,y1:y0+44,y2:y0+44,stroke:"var(--rule)"},s);
+  return s;
+}
+function lengthSVG(lenFn){const w=360,h=46;const s=el("svg",{viewBox:`0 0 ${w} ${h}`,class:"tracehead","aria-label":"Muscle length over time"});let d="";for(let i=0;i<=100;i++){const t=i/100;d+=(i?" L":"M")+(10+t*(w-20)).toFixed(1)+","+(26-lenFn(t)*18).toFixed(1);}el("path",{d,fill:"none",stroke:"var(--ink)","stroke-width":2},s);const tx=el("text",{x:10,y:44,"font-size":11,fill:"var(--muted)","font-family":"Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"},s);tx.textContent="Muscle length";return s;}
+const ramp=t=>t<0.3?0:t<0.45?(t-0.3)/0.15:1;
+const rampLen=t=>ramp(t);
+const shortLen=t=>t<0.3?1:t<0.45?1-(t-0.3)/0.15:0;
+const traceQs=[
+ {id:"tr1",prompt:"The muscle is stretched quickly, then held at its new length (top trace). Which recording comes from the primary sensory ending (Ia)?",len:rampLen,col:"var(--ink)",
+  opts:[{r:t=>t<0.3?28:t<0.45?150:55,ok:1},{r:t=>28+ramp(t)*30},{r:()=>30},{r:t=>t<0.3?28:t<0.45?0:28}],
+  ex:"Ia endings fire in proportion to the velocity of stretch during the dynamic phase, so you see a burst on the ramp, then a steady rate that is still higher than before because the muscle is now longer."},
+ {id:"tr2",prompt:"Same stretch and hold. Which recording comes from the secondary sensory ending (II)?",len:rampLen,col:"var(--ink)",
+  opts:[{r:t=>t<0.3?28:t<0.45?150:55},{r:t=>26+ramp(t)*32,ok:1},{r:()=>30},{r:t=>t<0.3?28:4}],
+  ex:"The secondary ending (II) fires faster at the new, longer static length, but it does not show the rapid velocity burst that Ia shows during the dynamic phase of stretch."},
+ {id:"tr3",prompt:"The muscle now shortens from the stretched length back to its original length, then is held (top trace). Which recording comes from the primary sensory ending (Ia)?",len:shortLen,col:"var(--ink)",
+  opts:[{r:t=>t<0.3?55:t<0.45?0:28,ok:1},{r:t=>t<0.3?55:t<0.45?150:28},{r:()=>55},{r:t=>t<0.3?55:0}],
+  ex:"The primary ending (Ia) falls silent during the dynamic phase of shortening, then resumes at the lower rate of the new static length. Spindle sensory neurons can register a decreased length, but Ia and II differ in their sensitivity to the dynamic phase of shortening."},
+ {id:"tr4",prompt:"Same shortening and hold. Which recording comes from the secondary sensory ending (II)?",len:shortLen,col:"var(--ink)",
+  opts:[{r:t=>t<0.3?55:t<0.45?0:28},{r:t=>t<0.3?55:55-clamp((t-0.3)/0.15,0,1)*27,ok:1},{r:t=>t<0.3?55:t<0.45?150:28},{r:()=>55}],
+  ex:"The secondary ending (II) keeps firing through the shortening, its rate falling with the length, and settles at the lower static rate. Unlike Ia, it does not fall silent."}
+];
+const mcqs=[
+ {id:"m1",book:true,prompt:"If the distance between the origin and insertion tendons is increased (the muscle is stretched), what happens to the frequency of action potentials along the sensory axons leaving the muscle spindles in that muscle?",opts:["Increases","Decreases","Does not change"],a:0,
+  ex:"Stretching the muscle lengthens the equatorial region of the intrafusal fibers, opening stretch-sensitive channels; spindle discharge rises in proportion to the lengthening.",see:[0,1]},
+ {id:"m2",book:true,prompt:"Activation of the Golgi tendon organ of a given muscle:",opts:["Monosynaptically produces EPSPs on the α motor neuron that returns to that muscle","Is most effectively produced by lengthening of the extrafusal fibers of that muscle","Polysynaptically produces IPSPs on the α motor neuron that returns to that muscle","Polysynaptically produces EPSPs on the α motor neuron that returns to that muscle","Activates motor neurons that return to the Golgi tendon organ itself"],a:2,
+  ex:"Golgi tendon organ sensory neurons activate inhibitory interneurons, which put IPSPs on the α motor neurons of the same muscle, reducing contraction. Option A describes the spindle; option E is wrong because the tendon organ has no motor innervation.",see:[0,3]},
+ {id:"m3",prompt:"Relative to the extrafusal fibers, the muscle spindle is arranged ___ and mainly signals ___.",opts:["In series; tension","In parallel; length","In series; length","In parallel; tension"],a:1,ex:"Spindles lie side by side with the extrafusal fibers (in parallel) and report muscle length; tendon organs lie end to end (in series) and report tension.",see:[0,0]},
+ {id:"m4",prompt:"Where are the contractile elements of an intrafusal muscle fiber?",opts:["Throughout the fiber, as in extrafusal fibers","Only in the equatorial region","Only at the polar ends","Intrafusal fibers have no contractile elements"],a:2,ex:"The poles contract; the equatorial region, where the sensory endings sit, cannot. Polar contraction tightens the equator without shortening the gross muscle.",see:[0,5]},
+ {id:"m5",prompt:"Which neurons innervate the contractile polar regions of the intrafusal fibers?",opts:["α motor neurons","γ motor neurons","Primary spindle sensory neurons (Ia)","Secondary spindle sensory neurons (II)"],a:1,ex:"γ motor neurons, whose cell bodies, like those of α motor neurons, lie in the ventral horn and whose axons leave through the ventral roots.",see:[0,5]},
+ {id:"m6",prompt:"During the dynamic phase of a stretch, which sensory neuron’s firing rate increases rapidly and in proportion to the velocity of stretch?",opts:["Type Ia","Type II","Golgi tendon organ sensory neuron","γ motor neuron"],a:0,ex:"During the dynamic stretching phase, the firing rate of the type Ia spindle sensory neuron increases rapidly and in proportion to the velocity of stretch. Both type Ia and type II fire faster at the new static length.",see:[0,1]},
+ {id:"m7",prompt:"What is the main purpose of firing γ motor neurons at the same time as α motor neurons?",opts:["To add force to the contraction","To keep the spindle taut and sensitive to stretch across the muscle’s whole range of length","To inhibit the antagonist muscle","To activate the Golgi tendon organ"],a:1,ex:"Shortening of the muscle could slacken the intrafusal fibers, which would severely limit the spindle’s ability to transduce stretch. Contraction of the polar regions by γ motor neurons, initiated together with α activation, keeps the spindle taut and sensitive to sudden stretches over the entire range of muscle length.",see:[0,4]},
+ {id:"m8",prompt:"The synapse between the spindle sensory neuron and the α motor neuron returning to the same muscle is:",opts:["Excitatory and monosynaptic","Inhibitory and monosynaptic","Excitatory and polysynaptic","Inhibitory and polysynaptic"],a:0,ex:"The sensory output neurons of the muscle spindle make excitatory, monosynaptic connections with α motor neurons that return to the extrafusal fibers of the same muscle. This is the muscle stretch reflex, or myotatic reflex.",see:[1]},
+ {id:"m9",prompt:"In the knee jerk, why does the antagonist relax rather than resist the extension?",opts:["Its tendon organs fire and inhibit it","Branches of the spindle sensory neurons excite inhibitory interneurons that produce IPSPs on the antagonist’s α motor neurons","γ motor neurons to the antagonist are activated","Its α motor neurons are excited monosynaptically"],a:1,ex:"Some terminal branches of individual spindle sensory neurons synapse on inhibitory spinal interneurons, which lie completely within the spinal cord. Their IPSPs on the α motor neurons of the antagonist prevent its contraction.",see:[1]},
+ {id:"m10",prompt:"Why is the quadriceps the easiest muscle in which to evoke the stretch reflex clinically?",opts:["It has the most muscle spindles","Its tendon runs over a sesamoid pulley, so a sideways tap stretches the whole muscle lengthwise","It lacks Golgi tendon organs","Its α motor neurons have the lowest threshold"],a:1,ex:"Because the patellar tendon goes over the patella, a lateral deflection becomes a longitudinal stretch. Tapping most other tendons just moves the belly sideways.",see:[1]},
+ {id:"m11",prompt:"Which statement about the Golgi tendon organ is correct?",opts:["It is supplied by γ motor neurons","It lies in series with about 10 to 15 extrafusal fibers and has no motor innervation","It lies inside the muscle spindle capsule","It fires fastest when the muscle is passively slack"],a:1,ex:"A slender capsule of braided collagen at the muscle–tendon junction, in series with 10 to 15 extrafusal fibers, supplied by a single sensory neuron and no motor neurons.",see:[0,3]},
+ {id:"m12",prompt:"γ motor neurons fire while muscle length is held constant. What happens to spindle sensory neuron firing?",opts:["Increases","Decreases","Stops completely","Does not change, because muscle length is unchanged"],a:0,ex:"Contracting the poles stretches the equatorial region from both ends, raising discharge even though the gross muscle has not changed length.",see:[0,5]},
+ {id:"m13",prompt:"An exaggerated stretch reflex (hyperreflexia) most likely indicates:",opts:["Damage to the dorsal root","Loss of α motor neurons to that muscle","Loss of descending inhibitory control from more rostral parts of the CNS","Rupture of the Golgi tendon organ"],a:2,ex:"Descending projections modulate spinal reflex circuits. Damage to the sensory or motor side reduces or abolishes the reflex instead.",see:[1,"hyper"]},
+ {id:"m14",prompt:"How do the Golgi tendon organ’s sensory endings get activated?",opts:["Stretch-sensitive channels in the equatorial region open","Braided collagen fibrils tighten and squeeze the endings when tension develops","Acetylcholine released by γ motor neurons","Chemical signals released by contracting muscle"],a:1,ex:"Tension in the tendon folds the braided collagen and pinches the intertwined neural branches.",see:[0,3]},
+ {id:"m15",prompt:"Free (non-organ) sensory endings in joint capsules and ligaments can provide information about:",opts:["Joint position, joint movement and pain-inducing stimuli","Muscle length only","Muscle tension only","Only the steady-state length of nearby muscles"],a:0,ex:"Key point 6: some of these endings respond to tension of the joint capsule (joint position), some to the velocity of joint movement, and some to strong mechanical stimuli or inflammatory mediators associated with pain, such as arthritic pain."}
+];
+const cases=[
+ {id:"c1",prompt:"You tap the right patellar tendon and nothing happens. What is the best explanation?",opts:["The right spindles failed to detect the stretch","α motor neurons to the right quadriceps are lost, so the arc is severed on its motor side","The right Golgi tendon organs are inhibiting the muscle","Descending inhibition from the brain has been lost"],a:1,ex:"The spindle can still detect the stretch, but α motor neurons returning to the quadriceps cannot make it contract.",see:[1,"alpha"]},
+ {id:"c2",prompt:"Why is the right quadriceps so much smaller than the left?",opts:["Disuse while the dog avoided weight bearing, with nerves intact","Atrophy from loss of the α motor neurons to its extrafusal fibers","Loss of its muscle spindles","Overactivity of γ motor neurons"],a:1,ex:"The small size is caused by atrophy, or muscle wasting, which in turn is caused by the loss of α motor neurons to the extrafusal muscle fibers in the quadriceps muscle belly."},
+ {id:"c3",prompt:"If the lesion were in the femoral nerve itself rather than only in the ventral roots, what else would you expect?",opts:["Hyperreflexia of the left leg","Some sensory loss as well as the motor deficits","Normal knee jerk on the right","Loss of the flexor reflex in all four legs"],a:1,ex:"A peripheral nerve carries both sensory and motor axons, so you would likely find some sensory loss too."},
+ {id:"c4",prompt:"The Holstein cow after dystocia stands wide-based but her knee jerk is normal. Why does that fit obturator nerve paralysis?",opts:["The obturator nerve carries the quadriceps spindle sensory neurons","The quadriceps reflex uses the femoral nerve; the obturator supplies the adductors, so the knee jerk is spared","Stretch reflexes are never affected by peripheral nerve damage","The cow is hyperreflexic, which masks the deficit"],a:1,ex:"Obturator damage weakens the adductor, pectineus and gracilis muscles (abduction, wide stance) while the femoral-nerve quadriceps arc stays intact."}
+];
+const totalItems=orderA.length+orderB.length+traceQs.length+mcqs.length+cases.length;
+
+function Quiz(boxId,items,kind){
+  this.box=document.getElementById(boxId);this.items=items;this.kind=kind;this.i=0;this.state={};
+  items.forEach(q=>{q._order=shuffle(q.opts.map((_,j)=>j));});
+  this.render();
+}
+Quiz.prototype.render=function(){
+  const q=this.items[this.i],box=this.box,me=this;
+  box.innerHTML="";
+  const meta=document.createElement("div");meta.className="qmeta";
+  meta.innerHTML=`<span>Question ${this.i+1} of ${this.items.length}</span><span>${q.book?"From the chapter’s practice questions":""}</span>`;
+  box.appendChild(meta);
+  const p=document.createElement("p");p.className="qprompt";p.textContent=q.prompt;box.appendChild(p);
+  if(this.kind==="trace"){box.appendChild(lengthSVG(q.len));}
+  const opts=document.createElement("div");opts.className="opts";box.appendChild(opts);
+  const ans=this.state[q.id];
+  const correctIdx=this.kind==="trace"?q.opts.findIndex(o=>o.ok):q.a;
+  q._order.forEach((j,pos)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML=`<span class="k">${"ABCDE"[pos]}</span>`;
+    const body=document.createElement("span");body.style.flex="1";
+    if(this.kind==="trace"){body.appendChild(traceSVG(q.opts[j].r,q.col));b.setAttribute("aria-label","Option "+"ABCDE"[pos]);}
+    else body.textContent=q.opts[j];
+    b.appendChild(body);
+    if(ans!==undefined){b.disabled=true;if(j===correctIdx)b.classList.add("right");else if(j===ans)b.classList.add("wrong");}
+    b.onclick=()=>{me.state[q.id]=j;record(q.id,j===correctIdx);me.render();};
+    opts.appendChild(b);
+  });
+  if(ans!==undefined){
+    const ex=document.createElement("div");ex.className="explain";ex.setAttribute("aria-live","polite");
+    const ok=ans===correctIdx;
+    ex.innerHTML=`<span class="verdict ${ok?"ok":"no"}">${ok?"Correct.":"Not quite: the highlighted option is the answer."}</span>`;
+    ex.appendChild(document.createTextNode(q.ex));
+    box.appendChild(ex);
+  }
+  const foot=document.createElement("div");foot.className="qfoot";
+  const left=document.createElement("div");left.className="nav";
+  const prev=document.createElement("button");prev.className="btn";prev.textContent="Previous";prev.disabled=this.i===0;prev.onclick=()=>{me.i--;me.render();};
+  const next=document.createElement("button");next.className="btn primary";next.textContent=this.i===this.items.length-1?"Back to first":"Next question";next.onclick=()=>{me.i=(me.i+1)%me.items.length;me.render();};
+  left.append(prev,next);foot.appendChild(left);
+  box.appendChild(foot);
+};
+const qT=new Quiz("qTraces",traceQs,"trace");
+const qM=new Quiz("qMcq",mcqs,"mcq");
+document.getElementById("caseText").innerHTML=`<p><b>Case 1.</b> An 8-year-old male golden retriever cannot bear weight on the right hind leg. The right quadriceps femoris is much smaller than the left. Tapping the left patellar tendon gives a brisk knee extension; tapping the right gives no movement.</p><p><b>Case 2.</b> A 2-year-old Holstein calved a few days ago after a difficult, assisted delivery. She is stiff and uncoordinated on the right hindlimb and stands with a wide, abducted base. Knee jerk, cranial tibial and flexor reflexes are all normal.</p>`;
+const qC=new Quiz("qCases",cases,"mcq");
+document.getElementById("resetScore").onclick=()=>{
+  score.answered={};score.correct={};
+  [qT,qM,qC].forEach(q=>{q.state={};q.i=0;q.items.forEach(it=>it._order=shuffle(it.opts.map((_,j)=>j)));q.render();});
+  buildPins("pinsA",orderA,namesA);buildPins("pinsB",orderB,namesB,ansB);renderScore();
+};
+renderScore();
+
+/* ================= INIT ================= */
+const savedTab=load("ch8-tab");
+showTab(savedTab&&document.getElementById(savedTab)?savedTab:"tab-a");
+goStep(0);
+sizeScope();
+viewA.update(simA);
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
